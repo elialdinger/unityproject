@@ -1,0 +1,1093 @@
+{
+    "worldName": "World 1",
+    "levels": [
+      {
+        "levelid": 0,
+        "pointIndex": 70,
+        "presetIndex": 0,
+        "presetName": "default",
+        "displayName": "Default Level",
+        "description": "play admin mode, open up variable menu and load your own preset",
+        "type": "level"
+      },
+      {
+        "levelid": 1,
+        "pointIndex": 1,
+        "presetIndex": 1,
+        "presetName": "tutorial1",
+        "displayName": "Tutorial 1",
+        "description": "the first tutorial, blue walls wont hurt you",
+        "type": "level"
+      },
+      {
+        "levelid": 2,
+        "pointIndex": 4,
+        "presetIndex": 2,
+        "presetName": "tutorial2",
+        "displayName": "Tutorial 2",
+        "description": "brown walls will kill you if you get stuck",
+        "type": "level"
+      },
+      {
+        "levelid": 3,
+        "pointIndex": 7,
+        "presetIndex": 3,
+        "presetName": "tutorial3",
+        "displayName": "Tutorial 3",
+        "description": "red walls will kill you on touch",
+        "type": "level"
+      },
+      {
+        "levelid": 4,
+        "pointIndex": 3,
+        "presetIndex": 3,
+        "presetName": "test1",
+        "displayName": "Test Level 1",
+        "description": "test your own level",
+        "type": "level"
+      },
+      {
+        "levelid": 5,
+        "pointIndex": 6,
+        "presetIndex": 3,
+        "presetName": "test2",
+        "displayName": "Test Level 2",
+        "description": "test your own level",
+        "type": "level"
+      },
+      {
+        "levelid": 6,
+        "pointIndex": 9,
+        "presetIndex": 3,
+        "presetName": "test3",
+        "displayName": "Test Level 3",
+        "description": "test your own level",
+        "type": "level"
+      },
+      {
+        "levelid": 7,
+        "pointIndex": 71,
+        "presetIndex": 3,
+        "presetName": "wallWalk",
+        "displayName": "Wall Walk",
+        "description": "let the walls be your be ground!",
+        "type": "level"
+      },
+      {
+        "levelid": 8,
+        "pointIndex": 72,
+        "presetIndex": 3,
+        "presetName": "wallWalk2",
+        "displayName": "Wall Walk 2",
+        "description": "let the walls be your be ground!\na ground that kills you!",
+        "type": "level"
+      },
+      {
+        "levelid": 9,
+        "pointIndex": 73,
+        "presetIndex": 3,
+        "presetName": "cheese1",
+        "displayName": "Cheese 1",
+        "description": "let the walls be your be ground!\na ground that kills you!",
+        "type": "level"
+      },
+      {
+        "levelid": 10,
+        "pointIndex": 74,
+        "presetIndex": 3,
+        "presetName": "cheese2",
+        "displayName": "Cheese 2",
+        "description": "let the walls be your be ground!\na ground that kills you!",
+        "type": "level"
+      },
+      {
+        "levelid": 11,
+        "pointIndex": 75,
+        "presetIndex": 3,
+        "presetName": "cheese3",
+        "displayName": "Cheese 3",
+        "description": "let the walls be your be ground!\na ground that kills you!",
+        "type": "level"
+      },
+      {
+        "levelid": 12,
+        "pointIndex": 76,
+        "presetIndex": 3,
+        "presetName": "cheese4",
+        "displayName": "Cheese 4",
+        "description": "let the walls be your be ground!\na ground that kills you!",
+        "type": "level"
+      },
+      {
+        "levelid": 13,
+        "pointIndex": 87,
+        "presetName": "multiPhase1",
+        "displayName": "Multi Phase 1",
+        "description": "first you're too fast, then you're too slow",
+        "type": "level"
+      },
+      {
+        "levelid": 14,
+        "pointIndex": 88,
+        "presetName": "multiPhase2",
+        "displayName": "Multi Phase 2",
+        "description": "bars WONT kill you (unless you jump)\norbs WILL kill you (if you don't get them)",
+        "type": "level"
+      },
+      {
+        "levelid": 15,
+        "pointIndex": 89,
+        "presetName": "multiPhase3",
+        "displayName": "Multi Phase 3",
+        "description": "every 3 orbs the obstacles will switch",
+        "type": "level"
+      },
+      {
+        "levelid": 16,
+        "pointIndex": 90,
+        "presetIndex":9,
+        "presetName": "backJumps",
+        "displayName": "Blocked Vision",
+        "description": "get the orb hidden in each object before it despawns!",
+        "type": "level"
+      },
+      {
+        "levelid": 17,
+        "pointIndex": 91,
+        "presetIndex":10,
+        "presetName": "doubleBars",
+        "displayName": "Trick Jump: Double Bars",
+        "description": "jump through both bars and get the orb\nyou lose if you miss an orb",
+        "type": "level"
+      },
+      {
+        "levelid": 18,
+        "pointIndex": 92,
+        "presetIndex":11,
+        "presetName": "riseTrick",
+        "displayName": "Trick Jump: Rise",
+        "description": "Get all 4 orbs from the 4 bars\nuse the blue one to rise!",
+        "type": "level"
+      }
+    ],
+    "points": [
+      { 
+        "location": {
+          "x": 130,
+          "y": 2,
+          "z": -120
+        },
+        "index": 70,
+        "paths": [0,0,2,1]
+      },
+      {
+        "location": {
+          "x": 120,
+          "y": 2,
+          "z": -130
+        },
+        "index": 1,
+        "paths": [0,0,4,2]
+      },
+      {
+        "location": {
+          "x": 130,
+          "y": 2,
+          "z": -130
+        },
+        "index": 2,
+        "paths": [70,1,5,3]
+      },
+      {
+        "location": {
+          "x": 140,
+          "y": 2,
+          "z": -130
+        },
+        "index": 3,
+        "paths": [0,2,6,0]
+      },
+      {
+        "location": {
+          "x": 120,
+          "y": 2,
+          "z": -140
+        },
+        "index": 4,
+        "paths": [1,0,7,5]
+      },
+      {
+        "location": {
+          "x": 130,
+          "y": 2,
+          "z": -140
+        },
+        "index": 5,
+        "paths": [2,4,8,6]
+      },
+      {
+        "location": {
+          "x": 140,
+          "y": 2,
+          "z": -140
+        },
+        "index": 6,
+        "paths": [3,5,9,0]
+      },
+      {
+        "location": {
+          "x": 120,
+          "y": 2,
+          "z": -150
+        },
+        "index": 7,
+        "paths": [4,0,0,8]
+      },
+      {
+        "location": {
+          "x":130,
+          "y": 2,
+          "z": -150
+        },
+        "index": 8,
+        "paths": [5,7,10,9]
+      },
+      {
+        "location": {
+          "x": 140,
+          "y": 2,
+          "z": -150
+        },
+        "index": 9,
+        "paths": [6,8,0,0]
+      },
+      {
+        "location": {
+          "x": 130,
+          "y": 2,
+          "z": -160
+        },
+        "index": 10,
+        "paths": [8,0,11,0]
+      },
+      {
+        "location": {
+          "x": 130,
+          "y": 2,
+          "z": -170
+        },
+        "index": 11,
+        "paths": [10,0,12,0]
+      },
+      {
+        "location": {
+          "x": 130,
+          "y": 2,
+          "z": -180
+        },
+        "index": 12,
+        "paths": [11,0,13,0]
+      },
+      {
+        "location": {
+          "x": 130,
+          "y": 1,
+          "z": -190
+        },
+        "index": 13,
+        "paths": [12,0,14,0]
+      },
+      {
+        "location": {
+          "x": 130,
+          "y": 1,
+          "z": -200
+        },
+        "index": 14,
+        "paths": [13,16,73,17]
+      },
+      {
+        "location": {
+          "x": 100,
+          "y": 1,
+          "z": -200
+        },
+        "index": 69,
+        "paths": [0,0,28,15]
+      },
+      {
+        "location": {
+          "x": 110,
+          "y": 1,
+          "z": -200
+        },
+        "index": 15,
+        "paths": [0,69,71,16]
+      },
+      {
+        "location": {
+          "x": 120,
+          "y": 1,
+          "z": -200
+        },
+        "index": 16,
+        "paths": [0,15,72,14]
+      },
+      {
+        "location": {
+          "x": 140,
+          "y": 1,
+          "z": -200
+        },
+        "index": 17,
+        "paths": [0,14,74,68]
+      },
+      {
+        "location": {
+          "x": 150,
+          "y": 1,
+          "z": -200
+        },
+        "index": 68,
+        "paths": [0,17,75,18]
+      },
+      {
+        "location": {
+          "x": 160,
+          "y": 1,
+          "z": -200
+        },
+        "index": 18,
+        "paths": [0,68,76,19]
+      },
+      {
+        "location": {
+          "x": 170,
+          "y": 1,
+          "z": -200
+        },
+        "index": 19,
+        "paths": [0,18,77,20]
+      },
+      {
+        "location": {
+          "x": 180,
+          "y": 1,
+          "z": -200
+        },
+        "index": 20,
+        "paths": [0,19,78,21]
+      },
+      {
+        "location": {
+          "x": 190,
+          "y": 1,
+          "z": -200
+        },
+        "index": 21,
+        "paths": [0,20,0,22]
+      },
+      {
+        "location": {
+          "x": 200,
+          "y": 1,
+          "z": -200
+        },
+        "index": 22,
+        "paths": [0,21,0,23]
+      },
+      {
+        "location": {
+          "x": 230,
+          "y": 22,
+          "z": -200
+        },
+        "index": 23,
+        "paths": [0,22,0,24]
+      },
+      {
+        "location": {
+          "x": 240,
+          "y": 22,
+          "z": -200
+        },
+        "index": 24,
+        "paths": [0,23,0,25]
+      },
+      {
+        "location": {
+          "x": 250,
+          "y": 22,
+          "z": -200
+        },
+        "index": 25,
+        "paths": [0,24,26,0]
+      },
+      {
+        "location": {
+          "x": 250,
+          "y": 22,
+          "z": -222
+        },
+        "index": 26,
+        "paths": [25,0,27,0]
+      },
+      {
+        "location": {
+          "x": 250,
+          "y": 1,
+          "z": -255
+        },
+        "index": 27,
+        "paths": [26,0,0,0]
+      },
+      {
+        "location": {
+          "x": 100,
+          "y": 1,
+          "z": -210
+        },
+        "index": 28,
+        "paths": [69,0,29,71]
+      },
+      {
+        "location": {
+          "x": 100,
+          "y": 1,
+          "z": -220
+        },
+        "index": 29,
+        "paths": [28,0,30,79]
+      },
+      {
+        "location": {
+          "x": 100,
+          "y": 1,
+          "z": -230
+        },
+        "index": 30,
+        "paths": [29,0,31,87]
+      },
+      {
+        "location": {
+          "x": 100,
+          "y": 1,
+          "z": -240
+        },
+        "index": 31,
+        "paths": [30,0,32,95]
+      },
+      {
+        "location": {
+          "x": 100,
+          "y": 1,
+          "z": -250
+        },
+        "index": 32,
+        "paths": [31,0,33,0]
+      },
+      {
+        "location": {
+          "x": 100,
+          "y": 1,
+          "z": -260
+        },
+        "index": 33,
+        "paths": [32,0,34,0]
+      },
+      {
+        "location": {
+          "x": 100,
+          "y": 1,
+          "z": -270
+        },
+        "index": 34,
+        "paths": [33,35,0,0]
+      },
+      {
+        "location": {
+          "x": 90,
+          "y": 1,
+          "z": -270
+        },
+        "index": 35,
+        "paths": [0,36,0,34]
+      },
+      {
+        "location": {
+          "x": 80,
+          "y": 1,
+          "z": -270
+        },
+        "index": 36,
+        "paths": [0,37,0,35]
+      },
+      {
+        "location": {
+          "x": 70,
+          "y": 1,
+          "z": -270
+        },
+        "index": 37,
+        "paths": [0,38,0,36]
+      },
+      {
+        "location": {
+          "x": 60,
+          "y": 1,
+          "z": -270
+        },
+        "index": 38,
+        "paths": [0,39,0,37]
+      },
+      {
+        "location": {
+          "x": 50,
+          "y": 1,
+          "z": -270
+        },
+        "index": 39,
+        "paths": [0,40,0,38]
+      },
+      {
+        "location": {
+          "x": 40,
+          "y": 1,
+          "z": -270
+        },
+        "index": 40,
+        "paths": [0,41,0,39]
+      },
+      {
+        "location": {
+          "x": 30,
+          "y": 1,
+          "z": -270
+        },
+        "index": 41,
+        "paths": [0,42,0,40]
+      },
+      {
+        "location": {
+          "x": 20,
+          "y": 1,
+          "z": -270
+        },
+        "index": 42,
+        "paths": [43,0,0,41]
+      },
+      {
+        "location": {
+          "x": 20,
+          "y": 1,
+          "z": -250
+        },
+        "index": 43,
+        "paths": [44,0,42,0]
+      },
+      {
+        "location": {
+          "x": 20,
+          "y": 1,
+          "z": -230
+        },
+        "index": 44,
+        "paths": [45,0,43,0]
+      },
+      {
+        "location": {
+          "x": 20,
+          "y": 1,
+          "z": -210
+        },
+        "index": 45,
+        "paths": [46,0,44,0]
+      },
+      {
+        "location": {
+          "x": 20,
+          "y": 19,
+          "z": -180
+        },
+        "index": 46,
+        "paths": [0,47,45,49]
+      },
+      {
+        "location": {
+          "x": 7,
+          "y": 19,
+          "z": -180
+        },
+        "index": 47,
+        "paths": [0,48,0,46]
+      },
+      {
+        "location": {
+          "x": -7,
+          "y": 19,
+          "z": -180
+        },
+        "index": 48,
+        "paths": [57,0,0,47]
+      },
+      {
+        "location": {
+          "x": 37,
+          "y": 19,
+          "z": -180
+        },
+        "index": 49,
+        "paths": [0,46,0,50]
+      },
+      {
+        "location": {
+          "x": 53,
+          "y": 19,
+          "z": -180
+        },
+        "index": 50,
+        "paths": [51,49,0,0]
+      },
+      {
+        "location": {
+          "x": 53,
+          "y": 19,
+          "z": -160
+        },
+        "index": 51,
+        "paths": [52,0,50,0]
+      },
+      {
+        "location": {
+          "x": 53,
+          "y": 19,
+          "z": -145
+        },
+        "index": 52,
+        "paths": [53,0,51,0]
+      },
+      {
+        "location": {
+          "x": 53,
+          "y": 19,
+          "z": -115
+        },
+        "index": 53,
+        "paths": [0,54,52,0]
+      },
+      {
+        "location": {
+          "x": 24,
+          "y": 19,
+          "z": -115
+        },
+        "index": 54,
+        "paths": [0,55,58,53]
+      },
+      {
+        "location": {
+          "x": -7,
+          "y": 19,
+          "z": -115
+        },
+        "index": 55,
+        "paths": [0,0,56,54]
+      },
+      {
+        "location": {
+          "x": -7,
+          "y": 19,
+          "z": -145
+        },
+        "index": 56,
+        "paths": [55,0,57,0]
+      },
+      {
+        "location": {
+          "x": -7,
+          "y": 19,
+          "z": -160
+        },
+        "index": 57,
+        "paths": [56,0,48,0]
+      },
+      {
+        "location": {
+          "x": 24,
+          "y": 31,
+          "z": -135
+        },
+        "index": 58,
+        "paths": [54,0,59,0]
+      },
+      {
+        "location": {
+          "x": 24,
+          "y": 31,
+          "z": -145
+        },
+        "index": 59,
+        "paths": [58,67,60,64]
+      },
+      {
+        "location": {
+          "x": 24,
+          "y": 31,
+          "z": -155
+        },
+        "index": 60,
+        "paths": [59,65,61,62]
+      },
+      {
+        "location": {
+          "x": 24,
+          "y": 31,
+          "z": -165
+        },
+        "index": 61,
+        "paths": [60,66,0,63]
+      },
+      {
+        "location": {
+          "x": 34,
+          "y": 31,
+          "z": -155
+        },
+        "index": 62,
+        "paths": [64,60,63,0]
+      },
+      {
+        "location": {
+          "x": 34,
+          "y": 31,
+          "z": -165
+        },
+        "index": 63,
+        "paths": [62,61,0,0]
+      },
+      {
+        "location": {
+          "x": 34,
+          "y": 31,
+          "z": -145
+        },
+        "index": 64,
+        "paths": [0,59,62,0]
+      },
+      {
+        "location": {
+          "x": 14,
+          "y": 31,
+          "z": -155
+        },
+        "index": 65,
+        "paths": [67,0,66,60]
+      },
+      {
+        "location": {
+          "x": 14,
+          "y": 31,
+          "z": -165
+        },
+        "index": 66,
+        "paths": [65,0,0,61]
+      },
+      {
+        "location": {
+          "x": 14,
+          "y": 31,
+          "z": -145
+        },
+        "index": 67,
+        "paths": [0,0,65,59]
+      },
+      {
+        "location": {
+          "x": 110,
+          "y": 1,
+          "z": -210
+        },
+        "index":71,
+        "paths": [15,28,79,72]
+      },
+      {
+        "location": {
+          "x": 120,
+          "y": 1,
+          "z": -210
+        },
+        "index":72,
+        "paths": [16,71,80,73]
+      },
+      {
+        "location": {
+          "x": 130,
+          "y": 1,
+          "z": -210
+        },
+        "index":73,
+        "paths": [14,72,81,74]
+      },
+      {
+        "location": {
+          "x": 140,
+          "y": 1,
+          "z": -210
+        },
+        "index":74,
+        "paths": [17,73,82,75]
+      },
+      {
+        "location": {
+          "x": 150,
+          "y": 1,
+          "z": -210
+        },
+        "index":75,
+        "paths": [68,74,83,76]
+      },
+      {
+        "location": {
+          "x": 160,
+          "y": 1,
+          "z": -210
+        },
+        "index":76,
+        "paths": [18,75,84,77]
+      },
+      {
+        "location": {
+          "x": 170,
+          "y": 1,
+          "z": -210
+        },
+        "index":77,
+        "paths": [19,76,85,78]
+      },
+      {
+        "location": {
+          "x": 180,
+          "y": 1,
+          "z": -210
+        },
+        "index":78,
+        "paths": [20,77,86,0]
+      },
+      {
+        "location": {
+          "x": 110,
+          "y": 1,
+          "z": -220
+        },
+        "index":79,
+        "paths": [71,29,87,80]
+      },
+      {
+        "location": {
+          "x": 120,
+          "y": 1,
+          "z": -220
+        },
+        "index":80,
+        "paths": [72,79,88,81]
+      },
+      {
+        "location": {
+          "x": 130,
+          "y": 1,
+          "z": -220
+        },
+        "index":81,
+        "paths": [73,80,89,82]
+      },
+      {
+        "location": {
+          "x": 140,
+          "y": 1,
+          "z": -220
+        },
+        "index":82,
+        "paths": [74,81,90,83]
+      },
+      {
+        "location": {
+          "x": 150,
+          "y": 1,
+          "z": -220
+        },
+        "index":83,
+        "paths": [75,82,91,84]
+      },
+      {
+        "location": {
+          "x": 160,
+          "y": 1,
+          "z": -220
+        },
+        "index":84,
+        "paths": [76,83,92,85]
+      },
+      {
+        "location": {
+          "x": 170,
+          "y": 1,
+          "z": -220
+        },
+        "index":85,
+        "paths": [77,84,93,86]
+      },
+      {
+        "location": {
+          "x": 180,
+          "y": 1,
+          "z": -220
+        },
+        "index":86,
+        "paths": [78,85,94,0]
+      },
+      {
+        "location": {
+          "x": 110,
+          "y": 1,
+          "z": -230
+        },
+        "index":87,
+        "paths": [79,30,95,88]
+      },
+      {
+        "location": {
+          "x": 120,
+          "y": 1,
+          "z": -230
+        },
+        "index":88,
+        "paths": [80,87,96,89]
+      },
+      {
+        "location": {
+          "x": 130,
+          "y": 1,
+          "z": -230
+        },
+        "index":89,
+        "paths": [81,88,97,90]
+      },
+      {
+        "location": {
+          "x": 140,
+          "y": 1,
+          "z": -230
+        },
+        "index":90,
+        "paths": [82,89,98,91]
+      },
+      {
+        "location": {
+          "x": 150,
+          "y": 1,
+          "z": -230
+        },
+        "index":91,
+        "paths": [83,90,99,92]
+      },
+      {
+        "location": {
+          "x": 160,
+          "y": 1,
+          "z": -230
+        },
+        "index":92,
+        "paths": [84,91,100,93]
+      },
+      {
+        "location": {
+          "x": 170,
+          "y": 1,
+          "z": -230
+        },
+        "index":93,
+        "paths": [85,92,101,94]
+      },
+      {
+        "location": {
+          "x": 180,
+          "y": 1,
+          "z": -230
+        },
+        "index":94,
+        "paths": [86,93,102,0]
+      },
+      {
+        "location": {
+          "x": 110,
+          "y": 1,
+          "z": -240
+        },
+        "index":95,
+        "paths": [87,31,0,96]
+      },
+      {
+        "location": {
+          "x": 120,
+          "y": 1,
+          "z": -240
+        },
+        "index":96,
+        "paths": [88,95,0,97]
+      },
+      {
+        "location": {
+          "x": 130,
+          "y": 1,
+          "z": -240
+        },
+        "index":97,
+        "paths": [89,96,0,98]
+      },
+      {
+        "location": {
+          "x": 140,
+          "y": 1,
+          "z": -240
+        },
+        "index":98,
+        "paths": [90,97,0,99]
+      },
+      {
+        "location": {
+          "x": 150,
+          "y": 1,
+          "z": -240
+        },
+        "index":99,
+        "paths": [91,98,0,100]
+      },
+      {
+        "location": {
+          "x": 160,
+          "y": 1,
+          "z": -240
+        },
+        "index":100,
+        "paths": [92,99,0,101]
+      },
+      {
+        "location": {
+          "x": 170,
+          "y": 1,
+          "z": -240
+        },
+        "index":101,
+        "paths": [93,100,0,102]
+      },
+      {
+        "location": {
+          "x": 180,
+          "y": 1,
+          "z": -240
+        },
+        "index":102,
+        "paths": [94,101,0,0]
+      }
+    ]
+  }

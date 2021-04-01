@@ -1,0 +1,260 @@
+{
+    "presetGroupName": "userWorld",
+    "presets": [
+        {
+            "name": "default",
+            "dependent": "none",
+            "score": {
+                "initialScore": 10,
+                "currentPhase": 0,
+                "phases": [
+                    {
+                        "mode": "time", 
+                        "duration": -1, 
+                        "countBackwards": false,
+                        "tags": [ 
+                            "self"
+                        ],
+                        "varChanges": [
+                            {
+                                "f": [
+                                    {"label": "", "value": 0}
+                                ],
+                                "s": [
+                                    {"label": "", "value": ""}
+                                ],
+                                "b":
+                                [
+                                    {"label": "", "value": false}
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            "vars": {
+                "f": [
+                    {"label": "versionNumber", "value": 210401},
+                    {"label": "scoreMode", "value": 3},
+                    {"label": "basicWallsArea", "value": 0.8},
+                    {"label": "scoreArea", "value": 0.3},
+                    {"label": "numOrbs", "value": 1},
+                    {"label": "groundRotSpeed", "value": 0},
+                    {"label": "groundRespawnProb", "value": 1},
+                    {"label": "groundModelSize", "value": 25},
+                    {"label": "worldSize", "value": 10},
+                    {"label": "numberOfTiles", "value": 7},
+                    {"label": "tileSpawnDelay", "value": 999},
+                    {"label": "tileFallDelay", "value": 2},
+                    {"label": "tileSize", "value": 3},
+                    {"label": "playerMoveSpeed", "value": 20.0},
+                    {"label": "playerJumpSpeed", "value": 50},
+                    {"label": "playerMaxNumJumps", "value": 2},
+                    {"label": "playerJumpChargeTime", "value": 2},
+                    {"label": "playerTeleportDistance", "value": 10},
+                    {"label": "playerTeleportScrollScale", "value": 5},
+                    {"label": "orbScoreRadius", "value": 2.2},
+                    {"label": "finalScore", "value": 0},
+                    {"label": "scoreArea", "value": 0.5}
+                ],
+                "s": [
+                    {"label": "groundMode", "value": "tiles"},
+                    {"label": "scoreMode", "value": "time"}
+                ],
+                "b": [
+                    {"label": "collisionsToggle", "value": true},
+                    {"label": "enableCrusher", "value": false},
+                    {"label": "enableSpikeBomb", "value": false},
+                    {"label": "enableGrowBomb", "value": false},
+                    {"label": "enableFallingTiles", "value": false},
+                    {"label": "playerTeleport", "value": false},
+                    {"label": "playerJumpInAir", "value": false},
+                    {"label": "playerTeleportScroll", "value": false},
+                    {"label": "pickupsSpikeBomb", "value": false},
+                    {"label": "pickupsGrowBomb", "value": false},
+                    {"label": "pickupOrbsKillOnFail", "value": false}
+                ]
+            },
+            "spawns": [
+                {
+                    "name": "basicWalls",
+                    "tag":  "basicWalls",
+                    "vars": {
+                        "f": [
+                            {"label": "moveSpeed", "value": 8},
+                            {"label": "holeSize", "value": 4},
+                            {"label": "width", "value": 0.3},
+                            {"label": "height", "value": 3},
+                            {"label": "riseSpeed", "value": 0},
+                            {"label": "spawnTimer", "value": 1},
+                            {"label": "area", "value": 1},
+                            {"label": "grip", "value": 1},
+                            {"label": "weightSpeed", "value": 0},
+                            {"label": "spawnOffset", "value": 0},
+                            {"label": "delayInitial", "value": 1.5},
+                            {"label": "startingHeight", "value": 0},
+                            {"label": "limitedMode", "value": -1},
+                            {"label": "timer", "value": 0.2},
+                            {"label": "orbHeight", "value": 5}
+                        ],
+                        "s": [
+                            {"label": "wallMode", "value": "push"}
+                        ],
+                        "b": [
+                            {"label": "enabled", "value": false},
+                            {"label": "spawnOrbs", "value": false},
+                            {"label": "castShadows", "value": true}
+                        ]
+                    }
+                },
+                {
+                    "name": "crusher",
+                    "tag": "crusher",
+                    "vars": {
+                        "f": [
+                            {"label": "width", "value": 5.0},
+                            {"label": "delay1", "value": 3.0},
+                            {"label": "delay2", "value": 0.65},
+                            {"label": "delay3", "value": 0.2},
+                            {"label": "speedScale", "value": 0.8},
+                            {"label": "delayInitial", "value": 1.5},
+                            {"label": "timer", "value": 5.0}
+                        ],
+                        "s": [
+    
+                        ],
+                        "b": [
+                            {"label": "enabled", "value": false}
+                        ]
+                    }
+                },
+                {
+                    "name": "growBomb",
+                    "tag": "growBomb",
+                    "vars": {
+                        "f": [
+                            {"label": "delay1", "value": 6.0},
+                            {"label": "delay2", "value": 3.0},
+                            {"label": "delay3", "value": 2.0},
+                            {"label": "maxSize", "value": 10},
+                            {"label": "growScale", "value": 1},
+                            {"label": "numPerCluster", "value": 20},
+                            {"label": "maxOffset", "value": 3},
+                            {"label": "delayInitial", "value": 1.5},
+                            {"label": "timer", "value": 3.0}
+                        ],
+                        "s": [
+    
+                        ],
+                        "b": [
+                            {"label": "enabled", "value": false}
+                        ]
+                    }
+                },
+                {
+                    "name": "spikeBomb",
+                    "tag": "spikeBomb",
+                    "vars": {
+                        "f": [
+                            {"label": "startDelay", "value": 4.5},
+                            {"label": "activeDelay", "value": 3.0},
+                            {"label": "sizeScale", "value": 1},
+                            {"label": "delayInitial", "value": 1.5},
+                            {"label": "timer", "value": 2}
+                        ],
+                        "s": [
+    
+                        ],
+                        "b": [
+                            {"label": "enabled", "value": false}
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "name": "test1",
+            "dependent": "default",
+            "score": {
+                "initialScore": 0,
+                "currentPhase": 0,
+                "phases": [
+                    {
+                        "mode": "time",
+                        "duration": -1,
+                        "countBackwards": false
+                    }
+                ]
+            },
+            "vars": {
+                "f": [
+                    {"label": "", "value": 0}
+                ],
+                "s": [
+                    {"label": "", "value": ""}
+                ],
+                "b": [
+                    {"label": "", "value": false}
+                ]
+            },
+            "spawns": [
+            ]
+        },
+        {
+            "name": "test2",
+            "dependent": "default",
+            "score": {
+                "initialScore": 0,
+                "currentPhase": 0,
+                "phases": [
+                    {
+                        "mode": "time",
+                        "duration": -1,
+                        "countBackwards": false
+                    }
+                ]
+            },
+            "vars": {
+                "f": [
+                    {"label": "", "value": 0}
+                ],
+                "s": [
+                    {"label": "", "value": ""}
+                ],
+                "b": [
+                    {"label": "", "value": false}
+                ]
+            },
+            "spawns": [
+            ]
+        },
+        {
+            "name": "test3",
+            "dependent": "default",
+            "score": {
+                "initialScore": 0,
+                "currentPhase": 0,
+                "phases": [
+                    {
+                        "mode": "time",
+                        "duration": -1,
+                        "countBackwards": false
+                    }
+                ]
+            },
+            "vars": {
+                "f": [
+                    {"label": "", "value": 0}
+                ],
+                "s": [
+                    {"label": "", "value": ""}
+                ],
+                "b": [
+                    {"label": "", "value": false}
+                ]
+            },
+            "spawns": [
+            ]
+        }
+    ]
+}

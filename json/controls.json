@@ -1,0 +1,13 @@
+{
+    "keyUp": "W",
+    "keyDown": "S",
+    "keyLeft": "A",
+    "keyRight": "D",
+    "keyJump": "Space",
+    "keyOptionsMenu": "O",
+    "keyEscapeButton": "Escape",
+    "keyButton1": "1",
+    "keyButton2": "2",
+    "keyButton3": "3",
+    "keyButton4": "4"
+}

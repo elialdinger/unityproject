@@ -1,0 +1,1853 @@
+{
+    "presetGroupName": "world1", //the group name associated to all presets in this file
+    "presets": [ //there is a list of PRESET objects
+        { //default - the first preset in every file is the DEFAULT preset, each other preset starts with all of these values and then adds it's new values on top of it
+            "name": "default", //the name of the preset
+            "dependent": "none", //the preset this is dependent on. NOTE: only ever use "default" (or "none" for the DEFAULT preset)
+            "score": { //each PRESET has a SCORE object - contains info on what score mode the level is and what happens in each phase
+                "initialScore": 0, //the value the score starts at (if you want the score to be a countdown from 100)
+                "currentPhase": 0, //change only if you want the level to start at a different phase
+                "phases": [ //list of phases this preset hase (can be only 1 or multiple)
+                    {//phase class
+                        "mode": "time", //"time", "orbs", "tileTouch", "timeArea"
+                        "duration": -1, //the value the score has to get to for this phase to end. set to -1 for the phase to never end
+                        "countBackwards": false, //true if the score should count down (get 5 orbs) (for boss fight/phase levels)
+                        "tags": [ //tags and varChanges are two related lists: the vars in varChanges will apply to the object in tags (during this phase)
+                            "self" //the name of object that this set of changes will apply to ("self" for base preset variables, id tag for changing variables of a spawn)
+                        ],
+                        "varChanges": [
+                            { //all of the variable changes to this target that should be applied during this phase
+                                "f": [
+                                    {"label": "", "value": 0}
+                                ],
+                                "s": [
+                                    {"label": "", "value": ""}
+                                ],
+                                "b":
+                                [
+                                    {"label": "", "value": false}
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            "vars": { //each preset has a base VARS object where it defines all of its own base variables
+                "f": [
+                    {"label": "versionNumber", "value": 210401}, //the version number (it is a date, YYMMDD of build)
+                    {"label": "scoreMode", "value": 3}, //OUTDATED DELETE
+                    {"label": "basicWallsArea", "value": 0.8}, //OUTDATED DELETE
+                    {"label": "scoreArea", "value": 0.3}, //the percentage of the map that gives you score in "timeArea" scoreMode
+                    {"label": "numOrbs", "value": 1}, //the number of orbs that spawn in "orbs" scoreMode
+                    {"label": "groundRotSpeed", "value": 0}, //the speed the ground rotates
+                    {"label": "groundRespawnProb", "value": 1}, //the percentage of tiles that respawn in "tileTouch" mode "enableFallingTiles=True"
+                    {"label": "groundModelSize", "value": 25}, //the size of the ground when you are using a model instead of tiles mode (TODO)
+                    {"label": "worldSize", "value": 10}, //OUTDATED DELETE
+                    {"label": "numberOfTiles", "value": 7}, //number of tiles in the level
+                    {"label": "tileSpawnDelay", "value": 999}, //delay in seconds for a tile to respawn after falling
+                    {"label": "tileFallDelay", "value": 2}, //delay in seconds for a tile to dissapear after being touched ("enableFallingTiles=True")
+                    {"label": "tileSize", "value": 3}, //the size of each tile
+                    {"label": "playerMoveSpeed", "value": 20.0}, //the speed the player moves
+                    {"label": "playerJumpSpeed", "value": 50}, //the force in the players jump
+                    {"label": "playerMaxNumJumps", "value": 2}, //the max amount of jumps the player can charge
+                    {"label": "playerJumpChargeTime", "value": 2}, //delay in seconds for a jump to charge
+                    {"label": "playerTeleportDistance", "value": 10}, //how far the player's teleport ability goes
+                    {"label": "playerTeleportScrollScale", "value": 5}, //how fast the scroll wheel works with the player's teleport ability
+                    {"label": "orbScoreRadius", "value": 2.2}, //the size of the score orbs
+                    {"label": "finalScore", "value": 0} //OUTDATED DELETE
+                ],
+                "s": [
+                    {"label": "groundMode", "value": "tiles"}, //"tiles" ???? TODO
+                    {"label": "scoreMode", "value": "time"} //"time" "orbs" "tileTouch" "timeArea"
+                ],
+                "b": [
+                    {"label": "collisionsToggle", "value": true}, //if getting crushed by a wall kills you VERY BUGGY
+                    {"label": "enableCrusher", "value": false}, //OUTDATED DELETE
+                    {"label": "enableSpikeBomb", "value": false}, //OUTDATED DELETE
+                    {"label": "enableGrowBomb", "value": false}, //OUTDATED DELETE
+                    {"label": "enableFallingTiles", "value": false}, //tiles fall after player touches them?
+                    {"label": "playerTeleport", "value": false}, //can player teleport?
+                    {"label": "playerJumpInAir", "value": false}, //can player jump in air/double jump?
+                    {"label": "playerTeleportScroll", "value": false}, //can player use scroll wheel to move teleport?
+                    {"label": "pickupsSpikeBomb", "value": false}, //do spike bombs spawn an orb by them?
+                    {"label": "pickupsGrowBomb", "value": false}, //do grow bombs spawn an orb by them? TODO?
+                    {"label": "pickupOrbsKillOnFail", "value": false} //if you miss an orb do you lose?
+                ]
+            },
+            "spawns": [ //every preset has a SPAWNS list which is a list of SpawnObjectElements -> any obstacles the level has
+                { //the DEFAULT preset is filled with the DEFAULT values for all spawn objects but sets them to "enabled:false"
+                    "name": "basicWalls", //walls object/platforms
+                    "tag":  "basicWalls", //the TAG is used to tell in the PHASES which object to apply changes to. use this name there
+                    "vars": { //the VARS object for this obstacle setting all of its properties
+                        "f": [
+                            {"label": "moveSpeed", "value": 8},
+                            {"label": "holeSize", "value": 4}, //TODO
+                            {"label": "width", "value": 0.3},
+                            {"label": "height", "value": 3},
+                            {"label": "riseSpeed", "value": 0}, //how fast it rises on its own
+                            {"label": "spawnTimer", "value": 1}, //OUTDATED DELETE ???
+                            {"label": "area", "value": 1}, //the percentage of the map they cover
+                            {"label": "grip", "value": 1}, //the percentage of grip they have (1 to make player move with them, 0 for them to slip out under player)
+                            {"label": "weightSpeed", "value": 0}, //how much it rises/sinks when the player is standing on it
+                            {"label": "spawnOffset", "value": 0}, //how far back behind the stage it spawns 
+                            {"label": "delayInitial", "value": 1.5}, //how long it waits before starting to spawn
+                            {"label": "startingHeight", "value": 0}, //the height of the walls
+                            {"label": "limitedMode", "value": -1}, //there are 4 modes for the wall starting from each direction. set to 1-4 to set a specific direction or -1 for random
+                            {"label": "timer", "value": 0.2}, //how often they spawn
+                            {"label": "orbHeight", "value": 5} //how high up the orbs spawn ("spawnOrbs:true")
+                        ],
+                        "s": [
+                            {"label": "wallMode", "value": "push"} //"push" "kill"
+                        ],
+                        "b": [
+                            {"label": "enabled", "value": false}, //if the obstacle is actually enabled. you set this in each PHASE to control different objects spawning
+                            {"label": "spawnOrbs", "value": false}, //if it spawns an orb on top/below wthe bar
+                            {"label": "castShadows", "value": true} //if the wall casts shadows
+                        ]
+                    }
+                },
+                {
+                    "name": "crusher",
+                    "tag": "crusher",
+                    "vars": {
+                        "f": [
+                            {"label": "width", "value": 5.0},
+                            {"label": "delay1", "value": 3.0},
+                            {"label": "delay2", "value": 0.65},
+                            {"label": "delay3", "value": 0.2},
+                            {"label": "speedScale", "value": 0.8},
+                            {"label": "delayInitial", "value": 1.5},
+                            {"label": "timer", "value": 5.0}
+                        ],
+                        "s": [
+    
+                        ],
+                        "b": [
+                            {"label": "enabled", "value": false}
+                        ]
+                    }
+                },
+                {
+                    "name": "growBomb",
+                    "tag": "growBomb",
+                    "vars": {
+                        "f": [
+                            {"label": "delay1", "value": 6.0},
+                            {"label": "delay2", "value": 3.0},
+                            {"label": "delay3", "value": 2.0},
+                            {"label": "maxSize", "value": 10},
+                            {"label": "growScale", "value": 1},
+                            {"label": "numPerCluster", "value": 20},
+                            {"label": "maxOffset", "value": 3},
+                            {"label": "delayInitial", "value": 1.5},
+                            {"label": "timer", "value": 3.0}
+                        ],
+                        "s": [
+    
+                        ],
+                        "b": [
+                            {"label": "enabled", "value": false}
+                        ]
+                    }
+                },
+                {
+                    "name": "spikeBomb",
+                    "tag": "spikeBomb",
+                    "vars": {
+                        "f": [
+                            {"label": "startDelay", "value": 4.5},
+                            {"label": "activeDelay", "value": 3.0},
+                            {"label": "sizeScale", "value": 1},
+                            {"label": "delayInitial", "value": 1.5},
+                            {"label": "timer", "value": 2}
+                        ],
+                        "s": [
+    
+                        ],
+                        "b": [
+                            {"label": "enabled", "value": false}
+                        ]
+                    }
+                }
+            ]
+        },
+        { //tutorial 1
+            "name": "tutorial1",
+            "dependent": "default",
+            "score": {
+                "initialScore": 0,
+                "currentPhase": 0,
+                "phases": [
+                    {
+                        "mode": "timeArea",
+                        "duration": -1,
+                        "countBackwards": false
+                    }
+                ]
+            },
+            "vars": {
+                "f": [
+                    {"label": "scoreMode", "value": 3},
+                    {"label": "numberOfTiles", "value": 6},
+                    {"label": "playerMaxNumJumps", "value": 1},
+                    {"label": "playerJumpChargeTime", "value": 5},
+                    {"label": "tileSize", "value": 6},
+                    {"label": "scoreArea", "value": 0.3},
+                    {"label": "basicWallsTimer", "value": 0.3},
+                    {"label": "tileSpawnDelay", "value": 999},
+                    {"label": "tileFallDelay", "value": 2}
+                ],
+                "s": [
+                    {"label": "groundMode", "value": "tiles"},
+                    {"label": "scoreMode", "value": "time"}
+                ],
+                "b": [
+                    {"label": "enableBasicWalls", "value": true},
+                    {"label": "collisionsToggle", "value": false}
+                ]
+            },
+            "spawns": [
+                {
+                    "name": "basicWalls",
+                    "tag": "walls1",
+                    "vars": {
+                        "f": [
+                            {"label": "width", "value": 3},
+                            {"label": "height", "value": 3},
+                            {"label": "area", "value": 1},
+                            {"label": "moveSpeed", "value": 15},
+                            {"label": "riseSpeed", "value": 0},
+                            {"label": "weightSpeed", "value": 0},
+                            {"label": "startingHeight", "value": 0},
+                            {"label": "spawnOffset", "value": 0},
+                            {"label": "delayInitial", "value": 0},
+                            {"label": "timer", "value": 0.5},
+                            {"label": "grip", "value": 0}
+                        ],
+                        "s": [
+                            {"label": "wallMode", "value": "push"}
+                        ],
+                        "b": [
+                            {"label": "enabled", "value": true}
+                        ]
+                    }
+                }
+            ]
+        },
+        { //tutorial 2
+            "name": "tutorial2",
+            "dependent": "default",
+            "score": {
+                "initialScore": 0,
+                "currentPhase": 0,
+                "phases": [
+                    {
+                        "mode": "timeArea",
+                        "duration": -1,
+                        "countBackwards": false
+                    }
+                ]
+            },
+            "vars": {
+                "f": [
+                    {"label": "scoreMode", "value": 3},
+                    {"label": "numberOfTiles", "value": 6},
+                    {"label": "playerMaxNumJumps", "value": 1},
+                    {"label": "playerJumpChargeTime", "value": 5},
+                    {"label": "tileSize", "value": 6},
+                    {"label": "scoreArea", "value": 0.3},
+                    {"label": "basicWallsTimer", "value": 0.3},
+                    {"label": "tileSpawnDelay", "value": 999},
+                    {"label": "tileFallDelay", "value": 2}
+                ],
+                "s": [
+                    {"label": "groundMode", "value": "tiles"},
+                    {"label": "scoreMode", "value": "time"}
+                ],
+                "b": [
+                    {"label": "enableBasicWalls", "value": true},
+                    {"label": "collisionsToggle", "value": true}
+                ]
+            },
+            "spawns": [
+                {
+                    "name": "basicWalls",
+                    "tag": "walls1",
+                    "vars": {
+                        "f": [
+                            {"label": "width", "value": 3},
+                            {"label": "height", "value": 3},
+                            {"label": "area", "value": 1},
+                            {"label": "moveSpeed", "value": 15},
+                            {"label": "riseSpeed", "value": 0},
+                            {"label": "weightSpeed", "value": 0},
+                            {"label": "startingHeight", "value": 0},
+                            {"label": "spawnOffset", "value": 0},
+                            {"label": "delayInitial", "value": 0},
+                            {"label": "timer", "value": 0.9},
+                            {"label": "grip", "value": 0}
+                        ],
+                        "s": [
+                            {"label": "wallMode", "value": "push"}
+                        ],
+                        "b": [
+                            {"label": "enabled", "value": true}
+                        ]
+                    }
+                }
+            ]
+        },
+        { //tutorial 3
+            "name": "tutorial3",
+            "dependent": "default",
+            "score": {
+                "initialScore": 0,
+                "currentPhase": 0,
+                "phases": [
+                    {
+                        "mode": "timeArea",
+                        "duration": -1,
+                        "countBackwards": false
+                    }
+                ]
+            },
+            "vars": {
+                "f": [
+                    {"label": "scoreMode", "value": 3},
+                    {"label": "numberOfTiles", "value": 6},
+                    {"label": "playerMaxNumJumps", "value": 1},
+                    {"label": "playerJumpChargeTime", "value": 1},
+                    {"label": "tileSize", "value": 6},
+                    {"label": "scoreArea", "value": 0.3},
+                    {"label": "basicWallsTimer", "value": 0.3},
+                    {"label": "tileSpawnDelay", "value": 999},
+                    {"label": "tileFallDelay", "value": 2}
+                ],
+                "s": [
+                    {"label": "groundMode", "value": "tiles"},
+                    {"label": "scoreMode", "value": "time"}
+                ],
+                "b": [
+                    {"label": "enableBasicWalls", "value": true},
+                    {"label": "collisionsToggle", "value": false}
+                ]
+            },
+            "spawns": [
+                {
+                    "name": "basicWalls",
+                    "tag": "walls1",
+                    "vars": {
+                        "f": [
+                            {"label": "width", "value": 3},
+                            {"label": "height", "value": 6},
+                            {"label": "area", "value": 0.5},
+                            {"label": "moveSpeed", "value": 12},
+                            {"label": "riseSpeed", "value": 0},
+                            {"label": "weightSpeed", "value": 0},
+                            {"label": "startingHeight", "value": 0},
+                            {"label": "spawnOffset", "value": 0},
+                            {"label": "delayInitial", "value": 2},
+                            {"label": "timer", "value": 1},
+                            {"label": "grip", "value": 0}
+                        ],
+                        "s": [
+                            {"label": "wallMode", "value": "kill"}
+                        ],
+                        "b": [
+                            {"label": "enabled", "value": true}
+                        ]
+                    }
+                }
+            ]
+        },
+        { //cheese1
+            "name": "cheese1",
+            "dependent": "default",
+            "score": {
+                "initialScore": 0,
+                "currentPhase": 0,
+                "phases": [
+                    {
+                        "mode": "tileTouch",
+                        "duration": -1,
+                        "countBackwards": false
+                    }
+                ]
+            },
+            "vars": {
+                "f": [
+                    {"label": "tileSpawnDelay", "value": 999},
+                    {"label": "tileFallDelay", "value": 2},
+                    {"label": "tileSize", "value": 4},
+                    {"label": "playerMaxNumJumps", "value": 2},
+                    {"label": "playerJumpChargeTime", "value": 0.1},
+                    {"label": "numberOfTiles", "value": 6},
+                    {"label": "groundRespawnProb", "value": 0.2}
+                ],
+                "s": [
+                    {"label": "groundMode", "value": "tiles"}
+                ],
+                "b": [
+                    {"label": "enableFallingTiles", "value": true},
+                    {"label": "playerJumpInAir", "value": true}
+                ]
+            },
+            "spawns": [
+            ]
+        },
+        { //cheese2
+            "name": "cheese2",
+            "dependent": "default",
+            "score": {
+                "initialScore": 0,
+                "currentPhase": 0,
+                "phases": [
+                    {
+                        "mode": "tileTouch",
+                        "duration": -1,
+                        "countBackwards": false
+                    }
+                ]
+            },
+            "vars": {
+                "f": [
+                    {"label": "tileSpawnDelay", "value": 999},
+                    {"label": "tileFallDelay", "value": 2},
+                    {"label": "tileSize", "value": 4},
+                    {"label": "playerMaxNumJumps", "value": 2},
+                    {"label": "playerJumpChargeTime", "value": 0.1},
+                    {"label": "numberOfTiles", "value": 6},
+                    {"label": "groundRespawnProb", "value": 0.4}
+                ],
+                "s": [
+                    {"label": "groundMode", "value": "tiles"}
+                ],
+                "b": [
+                    {"label": "enableFallingTiles", "value": true},
+                    {"label": "collisionsToggle", "value": false},
+                    {"label": "playerJumpInAir", "value": true}
+                ]
+            },
+            "spawns": [
+                {
+                    "name": "basicWalls",
+                    "tag": "walls1",
+                    "vars": {
+                        "f": [
+                            {"label": "moveSpeed", "value": 8},
+                            {"label": "holeSize", "value": 0},
+                            {"label": "width", "value": 0.5},
+                            {"label": "height", "value": 4},
+                            {"label": "riseSpeed", "value": 0},
+                            {"label": "spawnTimer", "value": 1},
+                            {"label": "area", "value": 1},
+                            {"label": "grip", "value": 0},
+                            {"label": "weightSpeed", "value": 0},
+                            {"label": "spawnOffset", "value": 0},
+                            {"label": "startingHeight", "value": 0},
+                            {"label": "timer", "value": 1.7}
+                        ],
+                        "s": [
+                            {"label": "wallMode", "value": "push"}
+                        ],
+                        "b": [
+                            {"label": "enabled", "value": true},
+                            {"label": "spawnOrbs", "value": false},
+                            {"label": "castShadows", "value": true}
+                        ]
+                    }
+                }
+            ]
+        },
+        { //cheese3
+            "name": "cheese3",
+            "dependent": "default",
+            "score": {
+                "initialScore": 0,
+                "currentPhase": 0,
+                "phases": [
+                    {
+                        "mode": "tileTouch",
+                        "duration": -1,
+                        "countBackwards": false
+                    }
+                ]
+            },
+            "vars": {
+                "f": [
+                    {"label": "tileSpawnDelay", "value": 999},
+                    {"label": "tileFallDelay", "value": 1},
+                    {"label": "tileSize", "value": 4},
+                    {"label": "playerMaxNumJumps", "value": 2},
+                    {"label": "playerMoveSpeed", "value": 15},
+                    {"label": "playerJumpChargeTime", "value": 0.1},
+                    {"label": "numberOfTiles", "value": 6},
+                    {"label": "groundRespawnProb", "value": 0.4}
+                ],
+                "s": [
+                    {"label": "groundMode", "value": "tiles"}
+                ],
+                "b": [
+                    {"label": "enableFallingTiles", "value": true},
+                    {"label": "collisionsToggle", "value": false},
+                    {"label": "playerJumpInAir", "value": true}
+                ]
+            },
+            "spawns": [
+                {
+                    "name": "basicWalls",
+                    "tag": "walls1",
+                    "vars": {
+                        "f": [
+                            {"label": "moveSpeed", "value": 14},
+                            {"label": "holeSize", "value": 0},
+                            {"label": "width", "value": 1},
+                            {"label": "height", "value": 3},
+                            {"label": "riseSpeed", "value": 0},
+                            {"label": "spawnTimer", "value": 1},
+                            {"label": "area", "value": 1},
+                            {"label": "grip", "value": 0},
+                            {"label": "weightSpeed", "value": -10},
+                            {"label": "spawnOffset", "value": 0},
+                            {"label": "startingHeight", "value": 0},
+                            {"label": "timer", "value": 0.7}
+                        ],
+                        "s": [
+                            {"label": "wallMode", "value": "push"}
+                        ],
+                        "b": [
+                            {"label": "enabled", "value": true},
+                            {"label": "spawnOrbs", "value": false},
+                            {"label": "castShadows", "value": true}
+                        ]
+                    }
+                }
+            ]
+        },
+        { //cheese4
+            "name": "cheese4",
+            "dependent": "default",
+            "score": {
+                "initialScore": 0,
+                "currentPhase": 0,
+                "phases": [
+                    {
+                        "mode": "tileTouch",
+                        "duration": -1,
+                        "countBackwards": false
+                    }
+                ]
+            },
+            "vars": {
+                "f": [
+                    {"label": "tileSpawnDelay", "value": 999},
+                    {"label": "tileFallDelay", "value": 1},
+                    {"label": "tileSize", "value": 5},
+                    {"label": "playerMaxNumJumps", "value": 2},
+                    {"label": "playerMoveSpeed", "value": 15},
+                    {"label": "playerJumpChargeTime", "value": 0.1},
+                    {"label": "numberOfTiles", "value": 5},
+                    {"label": "groundRespawnProb", "value": 0.4}
+                ],
+                "s": [
+                    {"label": "groundMode", "value": "tiles"}
+                ],
+                "b": [
+                    {"label": "enableFallingTiles", "value": true},
+                    {"label": "collisionsToggle", "value": false},
+                    {"label": "playerJumpInAir", "value": true}
+                ]
+            },
+            "spawns": [
+                {
+                    "name": "basicWalls",
+                    "tag": "walls1",
+                    "vars": {
+                        "f": [
+                            {"label": "moveSpeed", "value": 14},
+                            {"label": "holeSize", "value": 0},
+                            {"label": "width", "value": 1},
+                            {"label": "height", "value": 3},
+                            {"label": "riseSpeed", "value": 0},
+                            {"label": "spawnTimer", "value": 1},
+                            {"label": "area", "value": 1},
+                            {"label": "grip", "value": 0},
+                            {"label": "weightSpeed", "value": -10},
+                            {"label": "spawnOffset", "value": 20},
+                            {"label": "startingHeight", "value": 0},
+                            {"label": "timer", "value": 1.3}
+                        ],
+                        "s": [
+                            {"label": "wallMode", "value": "kill"}
+                        ],
+                        "b": [
+                            {"label": "enabled", "value": true},
+                            {"label": "spawnOrbs", "value": false},
+                            {"label": "castShadows", "value": true}
+                        ]
+                    }
+                }
+            ]
+        },
+        { //wallWalk
+            "name": "wallWalk",
+            "dependent": "default",
+            "score": {
+                "initialScore": 0,
+                "currentPhase": 0,
+                "phases": [
+                    {
+                        "mode": "time",
+                        "duration": -1,
+                        "countBackwards": false
+                    }
+                ]
+            },
+            "vars": {
+                "f": [
+                    {"label": "numberOfTiles", "value": 1},
+                    {"label": "tileSize", "value": 40},
+                    {"label": "scoreArea", "value": 0.6},
+                    {"label": "playerMoveSpeed", "value": 35},
+                    {"label": "tileSpawnDelay", "value": 999},
+                    {"label": "tileFallDelay", "value": 3}
+                ],
+                "s": [
+                    {"label": "groundMode", "value": "tiles"},
+                    {"label": "scoreMode", "value": "time"}
+                ],
+                "b": [
+                    {"label": "enableBasicWalls", "value": true},
+                    {"label": "enableFallingTiles", "value": true},
+                    {"label": "collisionsToggle", "value": false}
+                ]
+            },
+            "spawns": [
+                {
+                    "name": "basicWalls",
+                    "tag": "walls1",
+                    "vars": {
+                        "f": [
+                            {"label": "width", "value": 9},
+                            {"label": "height", "value": 1},
+                            {"label": "area", "value": 1},
+                            {"label": "moveSpeed", "value": 15},
+                            {"label": "riseSpeed", "value": 0},
+                            {"label": "weightSpeed", "value": 0},
+                            {"label": "startingHeight", "value": 4},
+                            {"label": "spawnOffset", "value": 0},
+                            {"label": "delayInitial", "value": 0},
+                            {"label": "timer", "value": 0.7},
+                            {"label": "grip", "value": 0}
+                        ],
+                        "s": [
+                            {"label": "mode", "value": "push"}
+                        ],
+                        "b": [
+                            {"label": "enabled", "value": true}
+                        ]
+                    }
+                }
+            ]
+        },
+        { //wallWalk2
+            "name": "wallWalk2",
+            "dependent": "default",
+            "score": {
+                "initialScore": 0,
+                "currentPhase": 0,
+                "phases": [
+                    {
+                        "mode": "time",
+                        "duration": 2,
+                        "countBackwards": false,
+                        "tags": [ //the tags/name of the object each VARS object in variableChanges will apply to (same order)
+                            "walls2" //the object that this set of changes will apply to ("self" for base preset variables, id tag for changing variables of a spawn)
+                        ],
+                        "varChanges": [
+                            { //all of the variable changes to this target that should be applied during this phase
+                                "s":
+                                [
+                                    {"label": "wallMode", "value": "kill"}
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "mode": "time",
+                        "duration": 2,
+                        "countBackwards": false,
+                        "tags": [ //the tags/name of the object each VARS object in variableChanges will apply to (same order)
+                            "walls1" //the object that this set of changes will apply to ("self" for base preset variables, id tag for changing variables of a spawn)
+                        ],
+                        "varChanges": [
+                            { //all of the variable changes to this target that should be applied during this phase
+                                "s":
+                                [
+                                    {"label": "wallMode", "value": "kill"}
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            "vars": {
+                "f": [
+                    {"label": "numberOfTiles", "value": 5},
+                    {"label": "playerMaxNumJumps", "value": 3},
+                    {"label": "tileSize", "value": 5},
+                    {"label": "scoreArea", "value": 0.6},
+                    {"label": "playerMoveSpeed", "value": 35},
+                    {"label": "tileSpawnDelay", "value": 999},
+                    {"label": "tileFallDelay", "value": 3}
+                ],
+                "s": [
+                    {"label": "groundMode", "value": "tiles"},
+                    {"label": "scoreMode", "value": "time"}
+                ],
+                "b": [
+                    {"label": "enableBasicWalls", "value": true},
+                    {"label": "enableFallingTiles", "value": false},
+                    {"label": "playerJumpInAir", "value": true},
+                    {"label": "collisionsToggle", "value": false}
+                ]
+            },
+            "spawns": [
+                {
+                    "name": "basicWalls",
+                    "tag": "walls1",
+                    "vars": {
+                        "f": [
+                            {"label": "width", "value": 9},
+                            {"label": "height", "value": 0.3},
+                            {"label": "area", "value": 1},
+                            {"label": "moveSpeed", "value": 8},
+                            {"label": "riseSpeed", "value": 0},
+                            {"label": "weightSpeed", "value": 0},
+                            {"label": "startingHeight", "value": 4},
+                            {"label": "spawnOffset", "value": 0},
+                            {"label": "delayInitial", "value": 0},
+                            {"label": "timer", "value": 2},
+                            {"label": "grip", "value": 0}
+                        ],
+                        "s": [
+                            {"label": "mode", "value": "push"}
+                        ],
+                        "b": [
+                            {"label": "enabled", "value": true}
+                        ]
+                    }
+                },
+                {
+                    "name": "basicWalls",
+                    "tag": "walls2",
+                    "vars": {
+                        "f": [
+                            {"label": "width", "value": 9},
+                            {"label": "height", "value": 0.3},
+                            {"label": "area", "value": 1},
+                            {"label": "moveSpeed", "value": 8},
+                            {"label": "riseSpeed", "value": 0},
+                            {"label": "weightSpeed", "value": 0},
+                            {"label": "startingHeight", "value": 8},
+                            {"label": "spawnOffset", "value": 0},
+                            {"label": "delayInitial", "value": 0},
+                            {"label": "timer", "value": 2},
+                            {"label": "grip", "value": 0}
+                        ],
+                        "s": [
+                            {"label": "mode", "value": "push"}
+                        ],
+                        "b": [
+                            {"label": "enabled", "value": true}
+                        ]
+                    }
+                }
+            ]
+        },
+        { //multiPhase1 (2 Fast 2 Slow)
+            "name": "multiPhase1",
+            "dependent": "default",
+            "score": {
+                "initialScore": 0, //the value the score starts at (if you want the score to be a countdown from 100)
+                "currentPhase": 0, //change only if you want the level to start at a different phase
+                "phases": [
+                    {//phase class
+                        "mode": "tileTouch",
+                        "duration": 36, //the value the score has to get to for this phase to end. set to -1 for the phase to never end (if countBackwards:false)
+                        "countBackwards": false, //true if the score should count down (get 5 orbs) (for boss fight/phase levels)
+                        "tags": [ //the tags/name of the object each VARS object in variableChanges will apply to (same order)
+                            "self" //the object that this set of changes will apply to ("self" for base preset variables, id tag for changing variables of a spawn)
+                        ],
+                        "varChanges": [
+                            { //all of the variable changes to this target that should be applied during this phase
+                                "f": [
+                                    {"label": "playerMoveSpeed", "value": 40},
+                                    {"label": "numberOfTiles", "value": 6},
+                                    {"label": "tileSize", "value": 6}
+                                ],
+                                "b":
+                                [
+                                    {"label": "enableFallingTiles", "value": false}
+                                ]
+                            }
+                        ]
+                    },
+                    {//phase class
+                        "mode": "tileTouch",
+                        "duration": 32, //the value the score has to get to for this phase to end. set to -1 for the phase to never end (if countBackwards:false)
+                        "countBackwards": false, //true if the score should count down (get 5 orbs) (for boss fight/phase levels)
+                        "tags": [ //the tags/name of the object each VARS object in variableChanges will apply to (same order)
+                            "self","walls1" //the object that this set of changes will apply to ("self" for base preset variables, id tag for changing variables of a spawn)
+                        ],
+                        "varChanges": [
+                        { //all of the variable changes to this target that should be applied during this phase
+                            "f": [
+                                {"label": "playerMoveSpeed", "value": 10},
+                                {"label": "numberOfTiles", "value": 4},
+                                {"label": "tileSize", "value": 8}
+                            ],
+                            "b":
+                            [
+                                {"label": "enableFallingTiles", "value": true}
+                            ]
+                        },
+                        { //all of the variable changes to this target that should be applied during this phase
+                            "f": [
+                                {"label": "height", "value": 3}
+                            ],
+                            "s": [
+                                {"label": "wallMode", "value": "push"}
+                            ]
+                        }
+                        ]
+                    }
+                ]
+            },
+            "vars": {
+                "f": [
+                    {"label": "playerMoveSpeed", "value": 40},
+                    {"label": "playerMaxNumJumps", "value": 3},
+                    {"label": "playerJumpChargeTime", "value": 1.5},
+                    {"label": "scoreMode", "value": 3},
+                    {"label": "numberOfTiles", "value": 3},
+                    {"label": "tileSize", "value": 10},
+                    {"label": "scoreArea", "value": 0.3},
+                    {"label": "basicWallsTimer", "value": 0.3},
+                    {"label": "tileSpawnDelay", "value": 999},
+                    {"label": "groundRespawnProb", "value": 0.7},
+                    {"label": "tileFallDelay", "value": 2}
+                ],
+                "s": [
+                    {"label": "groundMode", "value": "tiles"},
+                    {"label": "scoreMode", "value": "time"}
+                ],
+                "b": [
+                    {"label": "enableBasicWalls", "value": true},
+                    {"label": "enableFallingTiles", "value": false},
+                    {"label": "collisionsToggle", "value": false}
+                ]
+            },
+            "spawns": [
+                {
+                    "name": "basicWalls",
+                    "tag": "walls1",
+                    "vars": {
+                        "f": [
+                            {"label": "timer", "value": 1.7},
+                            {"label": "width", "value": 2},
+                            {"label": "height", "value": 6},
+                            {"label": "area", "value": 1},
+                            {"label": "moveSpeed", "value": 15},
+                            {"label": "riseSpeed", "value": 0},
+                            {"label": "weightSpeed", "value": 0},
+                            {"label": "startingHeight", "value": 0},
+                            {"label": "spawnOffset", "value": 30},
+                            {"label": "delayInitial", "value": 0},
+                            {"label": "grip", "value": 0}
+                        ],
+                        "s": [
+                            {"label": "wallMode", "value": "kill"}
+                        ],
+                        "b": [
+                            {"label": "enabled", "value": true}
+                        ]
+                    }
+                },
+                {
+                    "name": "basicWalls",
+                    "tag": "walls2",
+                    "vars": {
+                        "f": [
+                            {"label": "timer", "value": 1},
+                            {"label": "width", "value": 12},
+                            {"label": "height", "value": 0.3},
+                            {"label": "area", "value": 1},
+                            {"label": "moveSpeed", "value": 15},
+                            {"label": "riseSpeed", "value": 0},
+                            {"label": "weightSpeed", "value": -5},
+                            {"label": "startingHeight", "value": 10},
+                            {"label": "spawnOffset", "value": 0},
+                            {"label": "delayInitial", "value": 0},
+                            {"label": "grip", "value": 0}
+                        ],
+                        "b": [
+                            {"label": "enable", "value": true}
+                        ]
+                    }
+                }
+            ]
+        },
+        { //multiPhase2 (bars alternate modes every 3 seconds?)
+            "name": "multiPhase2",
+            "dependent": "default",
+            "score": {
+                "initialScore": 0, //the value the score starts at (if you want the score to be a countdown from 100)
+                "currentPhase": 0, //change only if you want the level to start at a different phase
+                "phases": [
+                    {//phase class
+                        "mode": "orbs",
+                        "duration": 1, //the value the score has to get to for this phase to end. set to -1 for the phase to never end (if countBackwards:false)
+                        "countBackwards": false, //true if the score should count down (get 5 orbs) (for boss fight/phase levels)
+                        "tags": [ //the tags/name of the object each VARS object in variableChanges will apply to (same order)
+                            "walls1", "walls2" //the object that this set of changes will apply to ("self" for base preset variables, id tag for changing variables of a spawn)
+                        ],
+                        "varChanges": [
+                            { //all of the variable changes to this target that should be applied during this phase
+                                "f": [
+                                    {"label": "limitedMode", "value": 0}
+                                ],
+                                "s": [
+                                    {"label": "", "value": ""}
+                                ],
+                                "b":
+                                [
+                                    {"label": "", "value": false}
+                                ]
+                            },
+                            { //all of the variable changes to this target that should be applied during this phase
+                                "f": [
+                                    {"label": "limitedMode", "value": 1}
+                                ],
+                                "s": [
+                                    {"label": "", "value": ""}
+                                ],
+                                "b":
+                                [
+                                    {"label": "", "value": false}
+                                ]
+                            }
+                        ]
+                    },
+                    {//phase class
+                        "mode": "orbs",
+                        "duration": 1, //the value the score has to get to for this phase to end. set to -1 for the phase to never end (if countBackwards:false)
+                        "countBackwards": false, //true if the score should count down (get 5 orbs) (for boss fight/phase levels)
+                        "tags": [ //the tags/name of the object each VARS object in variableChanges will apply to (same order)
+                            "walls1","walls2" //the object that this set of changes will apply to ("self" for base preset variables, id tag for changing variables of a spawn)
+                        ],
+                        "varChanges": [
+                            { //all of the variable changes to this target that should be applied during this phase
+                                "f": [
+                                    {"label": "limitedMode", "value": 3}
+                                ],
+                                "s": [
+                                    {"label": "", "value": ""}
+                                ],
+                                "b":
+                                [
+                                    {"label": "", "value": false}
+                                ]
+                            },
+                            { //all of the variable changes to this target that should be applied during this phase
+                                "f": [
+                                    {"label": "limitedMode", "value": 2}
+                                ],
+                                "s": [
+                                    {"label": "", "value": ""}
+                                ],
+                                "b":
+                                [
+                                    {"label": "", "value": false}
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            "vars": {
+                "f": [
+                    {"label": "playerMoveSpeed", "value": 25},
+                    {"label": "playerMaxNumJumps", "value": 3},
+                    {"label": "playerJumpChargeTime", "value": 1.5},
+                    {"label": "playerJumpSpeed", "value": 40},
+                    {"label": "scoreMode", "value": 3},
+                    {"label": "numOrbs", "value": 0},
+                    {"label": "numberOfTiles", "value": 3},
+                    {"label": "tileSize", "value": 10},
+                    {"label": "scoreArea", "value": 0.3},
+                    {"label": "basicWallsTimer", "value": 0.3},
+                    {"label": "tileSpawnDelay", "value": 999},
+                    {"label": "groundRespawnProb", "value": 0.7},
+                    {"label": "tileFallDelay", "value": 2}
+                ],
+                "s": [
+                    {"label": "groundMode", "value": "tiles"},
+                    {"label": "scoreMode", "value": "time"}
+                ],
+                "b": [
+                    {"label": "enableBasicWalls", "value": true},
+                    {"label": "enableFallingTiles", "value": false},
+                    {"label": "collisionsToggle", "value": false},
+                    {"label": "pickupOrbsKillOnFail", "value": false}
+                ]
+            },
+            "spawns": [
+                {
+                    "name": "basicWalls",
+                    "tag": "walls1",
+                    "vars": {
+                        "f": [
+                            {"label": "timer", "value": 0.8},
+                            {"label": "width", "value": 1.5},
+                            {"label": "height", "value": 2},
+                            {"label": "area", "value": 1},
+                            {"label": "moveSpeed", "value": 15},
+                            {"label": "riseSpeed", "value": 0},
+                            {"label": "weightSpeed", "value": 0},
+                            {"label": "startingHeight", "value": 2},
+                            {"label": "spawnOffset", "value": 0},
+                            {"label": "delayInitial", "value": 0},
+                            {"label": "limitedMode", "value": 0},
+                            {"label": "grip", "value": 0}
+                        ],
+                        "s": [
+                            {"label": "wallMode", "value": "kill"}
+                        ],
+                        "b": [
+                            {"label": "enabled", "value": true}
+                        ]
+                    }
+                },
+                {
+                    "name": "basicWalls",
+                    "tag": "walls2",
+                    "vars": {
+                        "f": [
+                            {"label": "timer", "value": 4},
+                            {"label": "width", "value": 4},
+                            {"label": "height", "value": 0.5},
+                            {"label": "area", "value": 1},
+                            {"label": "moveSpeed", "value": 15},
+                            {"label": "riseSpeed", "value": 0},
+                            {"label": "weightSpeed", "value": 0},
+                            {"label": "startingHeight", "value": 3},
+                            {"label": "spawnOffset", "value": 40},
+                            {"label": "delayInitial", "value": 0},
+                            {"label": "limitedMode", "value": 1},
+                            {"label": "grip", "value": 0}
+                        ],
+                        "s": [
+                            {"label": "wallMode", "value": "kill"}
+                        ],
+                        "b": [
+                            {"label": "enabled", "value": true},
+                            {"label": "spawnOrbs", "value": true}
+                        ]
+                    }
+                }
+            ]
+        },
+        { //multiPhase3 (every 3 orbs the obstacle switches spike bomb -> grow bomb)
+            "name": "multiPhase3",
+            "dependent": "default",
+            "score": {
+                "initialScore": 0, //the value the score starts at (if you want the score to be a countdown from 100)
+                "currentPhase": 0, //change only if you want the level to start at a different phase
+                "phases": [
+                    {//phase class
+                        "mode": "orbs",
+                        "duration": 3, //the value the score has to get to for this phase to end. set to -1 for the phase to never end (if countBackwards:false)
+                        "countBackwards": false, //true if the score should count down (get 5 orbs) (for boss fight/phase levels)
+                        "tags": [ //the tags/name of the object each VARS object in variableChanges will apply to (same order)
+                            "spikeBomb1" //the object that this set of changes will apply to ("self" for base preset variables, id tag for changing variables of a spawn)
+                        ],
+                        "varChanges": [
+                            { //all of the variable changes to this target that should be applied during this phase
+                                "f": [
+                                    {"label": "", "value": 0}
+                                ],
+                                "s": [
+                                    {"label": "", "value": ""}
+                                ],
+                                "b":
+                                [
+                                    {"label": "enabled", "value": true}
+                                ]
+                            }
+                        ]
+                    },
+                    {//phase class
+                        "mode": "orbs",
+                        "duration": 3, //the value the score has to get to for this phase to end. set to -1 for the phase to never end (if countBackwards:false)
+                        "countBackwards": false, //true if the score should count down (get 5 orbs) (for boss fight/phase levels)
+                        "tags": [ //the tags/name of the object each VARS object in variableChanges will apply to (same order)
+                            "growBomb1" //the object that this set of changes will apply to ("self" for base preset variables, id tag for changing variables of a spawn)
+                        ],
+                        "varChanges": [
+                        { //all of the variable changes to this target that should be applied during this phase
+                            "f": [
+                                {"label": "", "value": 0}
+                            ],
+                            "s": [
+                                {"label": "", "value": ""}
+                            ],
+                            "b":
+                            [
+                                {"label": "enabled", "value": true}
+                            ]
+                        }
+                        ]
+                    }
+                ]
+            },
+            "vars": {
+                "f": [
+                    {"label": "playerMoveSpeed", "value": 20},
+                    {"label": "playerMaxNumJumps", "value": 3},
+                    {"label": "playerJumpChargeTime", "value": 1.5},
+                    {"label": "scoreMode", "value": 3},
+                    {"label": "numberOfTiles", "value": 3},
+                    {"label": "tileSize", "value": 10},
+                    {"label": "scoreArea", "value": 0.3},
+                    {"label": "basicWallsTimer", "value": 0.3},
+                    {"label": "tileSpawnDelay", "value": 999},
+                    {"label": "groundRespawnProb", "value": 0.7},
+                    {"label": "tileFallDelay", "value": 2}
+                ],
+                "s": [
+                    {"label": "groundMode", "value": "tiles"},
+                    {"label": "scoreMode", "value": "time"}
+                ],
+                "b": [
+                    {"label": "enableBasicWalls", "value": true},
+                    {"label": "enableFallingTiles", "value": false},
+                    {"label": "collisionsToggle", "value": false}
+                ]
+            },
+            "spawns": [
+                {
+                    "name": "growBomb",
+                    "tag": "growBomb1",
+                    "vars": {
+                        "f": [
+                            {"label": "delay1", "value": 4.0},
+                            {"label": "delay2", "value": 1.0},
+                            {"label": "delay3", "value": 1.0},
+                            {"label": "maxSize", "value": 10},
+                            {"label": "growScale", "value": 1},
+                            {"label": "numPerCluster", "value": 5},
+                            {"label": "maxOffset", "value": 2},
+                            {"label": "delayInitial", "value": 0},
+                            {"label": "timer", "value": 0.7}
+                        ],
+                        "s": [
+    
+                        ],
+                        "b": [
+                            {"label": "enabled", "value": false}
+                        ]
+                    }
+                },
+                {
+                    "name": "spikeBomb",
+                    "tag": "spikeBomb1",
+                    "vars": {
+                        "f": [
+                            {"label": "startDelay", "value": 3},
+                            {"label": "activeDelay", "value": 1},
+                            {"label": "sizeScale", "value": 2},
+                            {"label": "delayInitial", "value": 0},
+                            {"label": "timer", "value": 0.7}
+                        ],
+                        "s": [
+    
+                        ],
+                        "b": [
+                            {"label": "enabled", "value": false}
+                        ]
+                    }
+                }
+            ]
+        },
+        { //blockedVision
+            "name": "backJumps",
+            "dependent": "default",
+            "score": {
+                "initialScore": 0, //the value the score starts at (if you want the score to be a countdown from 100)
+                "currentPhase": 0, //change only if you want the level to start at a different phase
+                "phases": [
+                    {//phase class
+                        "mode": "orbs",
+                        "duration": 1, //the value the score has to get to for this phase to end. set to -1 for the phase to never end (if countBackwards:false)
+                        "countBackwards": false, //true if the score should count down (get 5 orbs) (for boss fight/phase levels)
+                        "tags": [ //the tags/name of the object each VARS object in variableChanges will apply to (same order)
+                            "walls1","walls2","walls3" //the object that this set of changes will apply to ("self" for base preset variables, id tag for changing variables of a spawn)
+                        ],
+                        "varChanges": [
+                            { //all of the variable changes to this target that should be applied during this phase
+                                "f": [
+                                    {"label": "limitedMode", "value": 1}
+                                ],
+                                "s": [
+                                    {"label": "", "value": ""}
+                                ],
+                                "b":
+                                [
+                                    {"label": "", "value": false}
+                                ]
+                            },
+                            { //all of the variable changes to this target that should be applied during this phase
+                                "f": [
+                                    {"label": "limitedMode", "value": 1}
+                                ],
+                                "s": [
+                                    {"label": "", "value": ""}
+                                ],
+                                "b":
+                                [
+                                    {"label": "", "value": false}
+                                ]
+                            },
+                            { //all of the variable changes to this target that should be applied during this phase
+                                "f": [
+                                    {"label": "limitedMode", "value": 1}
+                                ],
+                                "s": [
+                                    {"label": "", "value": ""}
+                                ],
+                                "b":
+                                [
+                                    {"label": "", "value": false}
+                                ]
+                            }
+                        ]
+                    },
+                    {//phase class
+                        "mode": "orbs",
+                        "duration": 1, //the value the score has to get to for this phase to end. set to -1 for the phase to never end (if countBackwards:false)
+                        "countBackwards": false, //true if the score should count down (get 5 orbs) (for boss fight/phase levels)
+                        "tags": [ //the tags/name of the object each VARS object in variableChanges will apply to (same order)
+                            "walls1","walls2","walls3" //the object that this set of changes will apply to ("self" for base preset variables, id tag for changing variables of a spawn)
+                        ],
+                        "varChanges": [
+                            { //all of the variable changes to this target that should be applied during this phase
+                                "f": [
+                                    {"label": "limitedMode", "value": 2}
+                                ],
+                                "s": [
+                                    {"label": "", "value": ""}
+                                ],
+                                "b":
+                                [
+                                    {"label": "", "value": false}
+                                ]
+                            },
+                            { //all of the variable changes to this target that should be applied during this phase
+                                "f": [
+                                    {"label": "limitedMode", "value": 2}
+                                ],
+                                "s": [
+                                    {"label": "", "value": ""}
+                                ],
+                                "b":
+                                [
+                                    {"label": "", "value": false}
+                                ]
+                            },
+                            { //all of the variable changes to this target that should be applied during this phase
+                                "f": [
+                                    {"label": "limitedMode", "value": 2}
+                                ],
+                                "s": [
+                                    {"label": "", "value": ""}
+                                ],
+                                "b":
+                                [
+                                    {"label": "", "value": false}
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            "vars": {
+                "f": [
+                    {"label": "playerMoveSpeed", "value": 25},
+                    {"label": "playerMaxNumJumps", "value": 3},
+                    {"label": "playerJumpChargeTime", "value": 1.5},
+                    {"label": "playerJumpSpeed", "value": 40},
+                    {"label": "scoreMode", "value": 3},
+                    {"label": "numOrbs", "value": 0},
+                    {"label": "numberOfTiles", "value": 3},
+                    {"label": "tileSize", "value": 10},
+                    {"label": "scoreArea", "value": 0.3},
+                    {"label": "basicWallsTimer", "value": 0.3},
+                    {"label": "tileSpawnDelay", "value": 999},
+                    {"label": "groundRespawnProb", "value": 0.7},
+                    {"label": "tileFallDelay", "value": 2}
+                ],
+                "s": [
+                    {"label": "groundMode", "value": "tiles"},
+                    {"label": "scoreMode", "value": "time"}
+                ],
+                "b": [
+                    {"label": "enableBasicWalls", "value": true},
+                    {"label": "enableFallingTiles", "value": false},
+                    {"label": "collisionsToggle", "value": false},
+                    {"label": "pickupOrbsKillOnFail", "value": true}
+                ]
+            },
+            "spawns": [
+                {
+                    "name": "basicWalls",
+                    "tag": "walls1",
+                    "vars": {
+                        "f": [
+                            {"label": "timer", "value": 10},
+                            {"label": "width", "value": 3},
+                            {"label": "height", "value": 0.5},
+                            {"label": "area", "value": 1},
+                            {"label": "moveSpeed", "value": 7},
+                            {"label": "riseSpeed", "value": 0},
+                            {"label": "weightSpeed", "value": 0},
+                            {"label": "startingHeight", "value": 8},
+                            {"label": "spawnOffset", "value": 12},
+                            {"label": "delayInitial", "value": 0},
+                            {"label": "limitedMode", "value": 1},
+                            {"label": "orbHeight", "value": -2},
+                            {"label": "grip", "value": 0}
+                        ],
+                        "s": [
+                            {"label": "wallMode", "value": "kill"}
+                        ],
+                        "b": [
+                            {"label": "enabled", "value": true},
+                            {"label": "spawnOrbs", "value": true}
+                        ]
+                    }
+                },
+                {
+                    "name": "basicWalls",
+                    "tag": "walls2",
+                    "vars": {
+                        "f": [
+                            {"label": "timer", "value": 10},
+                            {"label": "width", "value": 0.5},
+                            {"label": "height", "value": 10},
+                            {"label": "area", "value": 1},
+                            {"label": "moveSpeed", "value": 7},
+                            {"label": "riseSpeed", "value": 0},
+                            {"label": "weightSpeed", "value": 0},
+                            {"label": "startingHeight", "value": 7},
+                            {"label": "spawnOffset", "value": 20},
+                            {"label": "delayInitial", "value": 0},
+                            {"label": "limitedMode", "value": 1},
+                            {"label": "grip", "value": 0}
+                        ],
+                        "s": [
+                            {"label": "wallMode", "value": "kill"}
+                        ],
+                        "b": [
+                            {"label": "enabled", "value": true}
+                        ]
+                    }
+                },
+                {
+                    "name": "basicWalls",
+                    "tag": "walls3",
+                    "vars": {
+                        "f": [
+                            {"label": "timer", "value": 10},
+                            {"label": "width", "value": 0.5},
+                            {"label": "height", "value": 10},
+                            {"label": "area", "value": 1},
+                            {"label": "moveSpeed", "value": 7},
+                            {"label": "riseSpeed", "value": 0},
+                            {"label": "weightSpeed", "value": 0},
+                            {"label": "startingHeight", "value": 7},
+                            {"label": "spawnOffset", "value": 5},
+                            {"label": "delayInitial", "value": 0},
+                            {"label": "limitedMode", "value": 1},
+                            {"label": "grip", "value": 0}
+                        ],
+                        "s": [
+                            {"label": "wallMode", "value": "kill"}
+                        ],
+                        "b": [
+                            {"label": "enabled", "value": true}
+                        ]
+                    }
+                }
+            ]
+        },
+        { //doubleBars)
+            "name": "doubleBars",
+            "dependent": "default",
+            "score": {
+                "initialScore": 0, //the value the score starts at (if you want the score to be a countdown from 100)
+                "currentPhase": 0, //change only if you want the level to start at a different phase
+                "phases": [
+                    {//phase class
+                        "mode": "orbs",
+                        "duration": 2, //the value the score has to get to for this phase to end. set to -1 for the phase to never end (if countBackwards:false)
+                        "countBackwards": false, //true if the score should count down (get 5 orbs) (for boss fight/phase levels)
+                        "tags": [ //the tags/name of the object each VARS object in variableChanges will apply to (same order)
+                            "walls1", "walls2" //the object that this set of changes will apply to ("self" for base preset variables, id tag for changing variables of a spawn)
+                        ],
+                        "varChanges": [
+                            { //all of the variable changes to this target that should be applied during this phase
+                                "f": [
+                                    {"label": "limitedMode", "value": 1}
+                                ],
+                                "s": [
+                                    {"label": "", "value": ""}
+                                ],
+                                "b":
+                                [
+                                    {"label": "", "value": false}
+                                ]
+                            },
+                            { //all of the variable changes to this target that should be applied during this phase
+                                "f": [
+                                    {"label": "limitedMode", "value": 1}
+                                ],
+                                "s": [
+                                    {"label": "", "value": ""}
+                                ],
+                                "b":
+                                [
+                                    {"label": "", "value": false}
+                                ]
+                            }
+                        ]
+                    },
+                    {//phase class
+                        "mode": "orbs",
+                        "duration": 2, //the value the score has to get to for this phase to end. set to -1 for the phase to never end (if countBackwards:false)
+                        "countBackwards": false, //true if the score should count down (get 5 orbs) (for boss fight/phase levels)
+                        "tags": [ //the tags/name of the object each VARS object in variableChanges will apply to (same order)
+                            "walls1","walls2" //the object that this set of changes will apply to ("self" for base preset variables, id tag for changing variables of a spawn)
+                        ],
+                        "varChanges": [
+                            { //all of the variable changes to this target that should be applied during this phase
+                                "f": [
+                                    {"label": "limitedMode", "value": 2}
+                                ],
+                                "s": [
+                                    {"label": "", "value": ""}
+                                ],
+                                "b":
+                                [
+                                    {"label": "", "value": false}
+                                ]
+                            },
+                            { //all of the variable changes to this target that should be applied during this phase
+                                "f": [
+                                    {"label": "limitedMode", "value": 2}
+                                ],
+                                "s": [
+                                    {"label": "", "value": ""}
+                                ],
+                                "b":
+                                [
+                                    {"label": "", "value": false}
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            "vars": {
+                "f": [
+                    {"label": "playerMoveSpeed", "value": 25},
+                    {"label": "playerMaxNumJumps", "value": 2},
+                    {"label": "playerJumpChargeTime", "value": 1.0},
+                    {"label": "playerJumpSpeed", "value": 40},
+                    {"label": "scoreMode", "value": 3},
+                    {"label": "numOrbs", "value": 0},
+                    {"label": "numberOfTiles", "value": 3},
+                    {"label": "tileSize", "value": 10},
+                    {"label": "scoreArea", "value": 0.3},
+                    {"label": "basicWallsTimer", "value": 0.3},
+                    {"label": "tileSpawnDelay", "value": 999},
+                    {"label": "groundRespawnProb", "value": 0.7},
+                    {"label": "tileFallDelay", "value": 2}
+                ],
+                "s": [
+                    {"label": "groundMode", "value": "tiles"},
+                    {"label": "scoreMode", "value": "time"}
+                ],
+                "b": [
+                    {"label": "enableBasicWalls", "value": true},
+                    {"label": "enableFallingTiles", "value": false},
+                    {"label": "collisionsToggle", "value": false},
+                    {"label": "pickupOrbsKillOnFail", "value": true}
+                ]
+            },
+            "spawns": [
+                {
+                    "name": "basicWalls",
+                    "tag": "walls1",
+                    "vars": {
+                        "f": [
+                            {"label": "timer", "value": 10},
+                            {"label": "width", "value": 3},
+                            {"label": "height", "value": 5},
+                            {"label": "area", "value": 0.7},
+                            {"label": "moveSpeed", "value": 9},
+                            {"label": "riseSpeed", "value": 0},
+                            {"label": "weightSpeed", "value": 0},
+                            {"label": "startingHeight", "value": 1},
+                            {"label": "spawnOffset", "value": 10},
+                            {"label": "delayInitial", "value": 0},
+                            {"label": "limitedMode", "value": 1},
+                            {"label": "grip", "value": 0},
+                            {"label": "orbHeight", "value": 5}
+                        ],
+                        "s": [
+                            {"label": "wallMode", "value": "kill"}
+                        ],
+                        "b": [
+                            {"label": "enabled", "value": true},
+                            {"label": "spawnOrbs", "value": true}
+                        ]
+                    }
+                },
+                {
+                    "name": "basicWalls",
+                    "tag": "walls2",
+                    "vars": {
+                        "f": [
+                            {"label": "timer", "value": 10},
+                            {"label": "width", "value": 3},
+                            {"label": "height", "value": 5},
+                            {"label": "area", "value": 0.7},
+                            {"label": "moveSpeed", "value": 9},
+                            {"label": "riseSpeed", "value": 0},
+                            {"label": "weightSpeed", "value": 0},
+                            {"label": "startingHeight", "value": 1},
+                            {"label": "spawnOffset", "value": 25},
+                            {"label": "delayInitial", "value": 0},
+                            {"label": "limitedMode", "value": 1},
+                            {"label": "grip", "value": 0},
+                            {"label": "orbHeight", "value": 5}
+                        ],
+                        "s": [
+                            {"label": "wallMode", "value": "kill"}
+                        ],
+                        "b": [
+                            {"label": "enabled", "value": true},
+                            {"label": "spawnOrbs", "value": true}
+                        ]
+                    }
+                }
+            ]
+        },
+        { //rise trick 
+            "name": "riseTrick",
+            "dependent": "default",
+            "score": {
+                "initialScore": 0, //the value the score starts at (if you want the score to be a countdown from 100)
+                "currentPhase": 0, //change only if you want the level to start at a different phase
+                "phases": [
+                    {//phase class
+                        "mode": "orbs",
+                        "duration": 4, //the value the score has to get to for this phase to end. set to -1 for the phase to never end (if countBackwards:false)
+                        "countBackwards": false, //true if the score should count down (get 5 orbs) (for boss fight/phase levels)
+                        "tags": [ //the tags/name of the object each VARS object in variableChanges will apply to (same order)
+                            "walls1", "walls2","walls3","walls4" //the object that this set of changes will apply to ("self" for base preset variables, id tag for changing variables of a spawn)
+                        ],
+                        "varChanges": [
+                            { //all of the variable changes to this target that should be applied during this phase
+                                "f": [
+                                    {"label": "limitedMode", "value": 1}
+                                ],
+                                "s": [
+                                    {"label": "", "value": ""}
+                                ],
+                                "b":
+                                [
+                                    {"label": "", "value": false}
+                                ]
+                            },
+                            { //all of the variable changes to this target that should be applied during this phase
+                                "f": [
+                                    {"label": "limitedMode", "value": 1}
+                                ],
+                                "s": [
+                                    {"label": "", "value": ""}
+                                ],
+                                "b":
+                                [
+                                    {"label": "", "value": false}
+                                ]
+                            },
+                            { //all of the variable changes to this target that should be applied during this phase
+                                "f": [
+                                    {"label": "limitedMode", "value": 1}
+                                ],
+                                "s": [
+                                    {"label": "", "value": ""}
+                                ],
+                                "b":
+                                [
+                                    {"label": "", "value": false}
+                                ]
+                            },
+                            { //all of the variable changes to this target that should be applied during this phase
+                                "f": [
+                                    {"label": "limitedMode", "value": 1}
+                                ],
+                                "s": [
+                                    {"label": "", "value": ""}
+                                ],
+                                "b":
+                                [
+                                    {"label": "", "value": false}
+                                ]
+                            }
+                        ]
+                    },
+                    {//phase class
+                        "mode": "orbs",
+                        "duration": 4, //the value the score has to get to for this phase to end. set to -1 for the phase to never end (if countBackwards:false)
+                        "countBackwards": false, //true if the score should count down (get 5 orbs) (for boss fight/phase levels)
+                        "tags": [ //the tags/name of the object each VARS object in variableChanges will apply to (same order)
+                            "walls1","walls2","walls3","walls4" //the object that this set of changes will apply to ("self" for base preset variables, id tag for changing variables of a spawn)
+                        ],
+                        "varChanges": [
+                            { //all of the variable changes to this target that should be applied during this phase
+                                "f": [
+                                    {"label": "limitedMode", "value": 2}
+                                ],
+                                "s": [
+                                    {"label": "", "value": ""}
+                                ],
+                                "b":
+                                [
+                                    {"label": "", "value": false}
+                                ]
+                            },
+                            { //all of the variable changes to this target that should be applied during this phase
+                                "f": [
+                                    {"label": "limitedMode", "value": 2}
+                                ],
+                                "s": [
+                                    {"label": "", "value": ""}
+                                ],
+                                "b":
+                                [
+                                    {"label": "", "value": false}
+                                ]
+                            },
+                            { //all of the variable changes to this target that should be applied during this phase
+                                "f": [
+                                    {"label": "limitedMode", "value": 2}
+                                ],
+                                "s": [
+                                    {"label": "", "value": ""}
+                                ],
+                                "b":
+                                [
+                                    {"label": "", "value": false}
+                                ]
+                            },
+                            { //all of the variable changes to this target that should be applied during this phase
+                                "f": [
+                                    {"label": "limitedMode", "value": 2}
+                                ],
+                                "s": [
+                                    {"label": "", "value": ""}
+                                ],
+                                "b":
+                                [
+                                    {"label": "", "value": false}
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            "vars": {
+                "f": [
+                    {"label": "playerMoveSpeed", "value": 25},
+                    {"label": "playerMaxNumJumps", "value": 3},
+                    {"label": "playerJumpChargeTime", "value": 1.5},
+                    {"label": "playerJumpSpeed", "value": 40},
+                    {"label": "scoreMode", "value": 3},
+                    {"label": "numOrbs", "value": 0},
+                    {"label": "numberOfTiles", "value": 3},
+                    {"label": "tileSize", "value": 10},
+                    {"label": "scoreArea", "value": 0.3},
+                    {"label": "basicWallsTimer", "value": 0.3},
+                    {"label": "tileSpawnDelay", "value": 999},
+                    {"label": "groundRespawnProb", "value": 0.7},
+                    {"label": "tileFallDelay", "value": 2}
+                ],
+                "s": [
+                    {"label": "groundMode", "value": "tiles"},
+                    {"label": "scoreMode", "value": "time"}
+                ],
+                "b": [
+                    {"label": "enableBasicWalls", "value": true},
+                    {"label": "enableFallingTiles", "value": false},
+                    {"label": "collisionsToggle", "value": false},
+                    {"label": "pickupOrbsKillOnFail", "value": true}
+                ]
+            },
+            "spawns": [
+                {
+                    "name": "basicWalls",
+                    "tag": "walls1",
+                    "vars": {
+                        "f": [
+                            {"label": "timer", "value": 10},
+                            {"label": "width", "value": 5},
+                            {"label": "height", "value": 3},
+                            {"label": "area", "value": 1},
+                            {"label": "moveSpeed", "value": 9},
+                            {"label": "riseSpeed", "value": 0},
+                            {"label": "weightSpeed", "value": 0},
+                            {"label": "startingHeight", "value": 1},
+                            {"label": "spawnOffset", "value": 5},
+                            {"label": "delayInitial", "value": 0},
+                            {"label": "limitedMode", "value": 1},
+                            {"label": "grip", "value": 0},
+                            {"label": "orbHeight", "value": 5}
+                        ],
+                        "s": [
+                            {"label": "wallMode", "value": "kill"}
+                        ],
+                        "b": [
+                            {"label": "enabled", "value": true},
+                            {"label": "spawnOrbs", "value": true}
+                        ]
+                    }
+                },
+                {
+                    "name": "basicWalls",
+                    "tag": "walls2",
+                    "vars": {
+                        "f": [
+                            {"label": "timer", "value": 10},
+                            {"label": "width", "value": 5},
+                            {"label": "height", "value": 2},
+                            {"label": "area", "value": 1},
+                            {"label": "moveSpeed", "value": 9},
+                            {"label": "riseSpeed", "value": 0},
+                            {"label": "weightSpeed", "value": 5},
+                            {"label": "startingHeight", "value": 1},
+                            {"label": "spawnOffset", "value": 15},
+                            {"label": "delayInitial", "value": 0},
+                            {"label": "limitedMode", "value": 1},
+                            {"label": "grip", "value": 1},
+                            {"label": "orbHeight", "value": 2}
+                        ],
+                        "s": [
+                            {"label": "wallMode", "value": "push"}
+                        ],
+                        "b": [
+                            {"label": "enabled", "value": true},
+                            {"label": "spawnOrbs", "value": true}
+                        ]
+                    }
+                },
+                {
+                    "name": "basicWalls",
+                    "tag": "walls3",
+                    "vars": {
+                        "f": [
+                            {"label": "timer", "value": 10},
+                            {"label": "width", "value": 5},
+                            {"label": "height", "value": 3},
+                            {"label": "area", "value": 1},
+                            {"label": "moveSpeed", "value": 9},
+                            {"label": "riseSpeed", "value": 0},
+                            {"label": "weightSpeed", "value": 0},
+                            {"label": "startingHeight", "value": 1},
+                            {"label": "spawnOffset", "value": 25},
+                            {"label": "delayInitial", "value": 0},
+                            {"label": "limitedMode", "value": 1},
+                            {"label": "grip", "value": 0},
+                            {"label": "orbHeight", "value": 13}
+                        ],
+                        "s": [
+                            {"label": "wallMode", "value": "kill"}
+                        ],
+                        "b": [
+                            {"label": "enabled", "value": true},
+                            {"label": "spawnOrbs", "value": true}
+                        ]
+                    }
+                },
+                {
+                    "name": "basicWalls",
+                    "tag": "walls4",
+                    "vars": {
+                        "f": [
+                            {"label": "timer", "value": 10},
+                            {"label": "width", "value": 5},
+                            {"label": "height", "value": 2},
+                            {"label": "area", "value": 1},
+                            {"label": "moveSpeed", "value": 9},
+                            {"label": "riseSpeed", "value": 0},
+                            {"label": "weightSpeed", "value": 0},
+                            {"label": "startingHeight", "value": 1},
+                            {"label": "spawnOffset", "value": 45},
+                            {"label": "delayInitial", "value": 0},
+                            {"label": "limitedMode", "value": 1},
+                            {"label": "grip", "value": 0},
+                            {"label": "orbHeight", "value": 5}
+                        ],
+                        "s": [
+                            {"label": "wallMode", "value": "kill"}
+                        ],
+                        "b": [
+                            {"label": "enabled", "value": true},
+                            {"label": "spawnOrbs", "value": true}
+                        ]
+                    }
+                }
+            ]
+        },
+        { //BLANK TEMPLATE
+            "name": "",
+            "dependent": "default",
+            "score": {
+                "initialScore": 0,
+                "currentPhase": 0,
+                "phases": [
+                    {
+                        "mode": "time",
+                        "duration": -1,
+                        "countBackwards": false
+                    }
+                ]
+            },
+            "vars": {
+                "f": [
+                    {"label": "", "value": 0}
+                ],
+                "s": [
+                    {"label": "", "value": ""}
+                ],
+                "b": [
+                    {"label": "", "value": false}
+                ]
+            },
+            "spawns": [
+            ]
+        }
+    ]
+}
