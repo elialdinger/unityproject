@@ -1,0 +1,493 @@
+CUSTOM LEVEL INSTRUCTIONS:
+
+    - To load custom levels you will need to store a JSON file in your game folder
+        -Probably located at: C:\Users\NAME\AppData\LocalLow\cashantler\sss\
+
+    - There are three types of files you can load into the game:
+        - PRESET file
+        - WORLD file
+        - CONTROLS file
+    
+    - You load a file by inputting these commands into the command line on the first screen:
+                - PRESET <preset filename>
+                - WORLD <file name>
+                - CONTROLS <file name>
+            - If the command worked and the file was loaded, the text above should change to the filename.
+    
+    - An example of each of these files is included in the github in the "JSON" folder
+        - It contains:
+            - preset.json       The PRESET file the game uses by default
+            - world.json        The WORLD file the game uses by default
+            - controls.json     The CONTROLS file the game uses by default
+            - presetUser.json   A blank PRESET file the user can edit
+
+        - Download the files from there, put them in your root folder, and input it in the game to load them.
+
+    - The preset.json file contains many COMMENTS explaining how the preset structure works
+        - You can NOT load a file with comments into the game, use presetUser.json without comments
+
+PRESET IDEAS
+    - Mode where you have to sort walls by height?
+        - By making it so when you stand on them they rise/LOWER
+        - You have to make green walls stay lower, red walls rise, orange walls in middle, etc..?
+    - Mode with partial tile respawn? Forced to jump between tiles
+        - Make only 10% of tiles respawn
+        - Make 10% tiles respawn every time, or make each tile have 10% chance of respawning?
+        - Make tiles respawn in an order/pattern like lines that you follow
+    - Acceleration based movement mode?
+        - Make a mode like zero-friction where you have to counter tap to stop moving in a direction?
+        - Counter-strafe movement like CSGO and then partial tile respawn so they have to dodge holes?
+        - Make a mode where the tiles give you acceleration in directions?
+            - Like tiles are conveyor belts
+            - A mode where tiles push you towards center at increasing intensity so you can't reach outside edges?
+    - Something to make use of wall obstacles spawnOffset where they can spawn farther back? something where they need to look ahead?
+    - Variable: how far the orb spawns from you in spawn orbs mode
+            - right now it spawns somewhere random
+            - make it always spawn (0.1, 0.5, etc) far away from the player (so it always spawns right next to you, or always really far)
+            - or just have a minimum distance from player mode? (to make it not double spawn on top of you)
+    - Need way better modes for jumping and way more variables for jumping in general
+        - Acceleration
+        - Jetpack
+        - Speed of the jump going up/speed of going down should be changable seperate (glide mode?)
+        - Jumps where you let go early to jump lower
+            - Mode where you have to jump very quickly between stuff?
+    - Make a level exactly like super spinning smiley
+        - no jumping, forced perspective, forced rotation
+    - Make a level exactly like risky remap
+        - controls change over time or by getting score orbs?
+        - if you are changing a key from X to Y, show Y and make both X and Y work for a couple seconds then X stops and only Y works
+    - Make a level exactly like bad bulky boxes
+        - Forces perspective no jumping
+        - Make the player get larger when they hit boxes?
+    - Make a level exactly like juvenile jetpack joyride
+        - You drop through the bottom of the level and spawn at the top to gain momentum
+        - Asteroids that move around slowly?
+        - How would the click movement work in 3d
+    - A mode where you move slower than the tiles fall, so you have to jump on platforms to move you faster than you can normally
+    - Mode where you have to get an orb underneath tiles
+        - Require them to drop down and then jump in air to get it?
+        - Should they jump through tiles?
+    - Cup shaped enemy you have to jump into to kill?
+    - Mode where you right click to throw a ball up that drops 1/5/20/etc seconds later
+        - Throw ball into cup shaped enemies?
+        - Catch the ball when it lands?
+        - Throw through a hoop?
+        - Mode where it has to ladn on an enemy? boss level?
+        - Mode where the ball needs to drop under the ground? (you would need to clear the ground tile under it at specfiic time?)
+    -Remap mode
+        - Mode where it will just swap from WASD to AWDS/SDWA/DSAW/etc
+        - Mode where it will swap to any letters on keyboard
+    - Fixed camera mode
+        - Mode where the rotation is fixed and steady
+        - Mode where rotation oscilates between set points
+        - Mode where rotation is controlled by mouse (different axises? completely free?)
+    - Obstacle, ghost that follows around on (X,Z) of where the player was X seconds ago, kill players who backtrack or stand in one spot
+    - Feels like there's a whole lot I could add in a mode that works like Downwell with verticality
+    - Re-add falling boulder obstacle, to use for modes where you rise on bars vertically
+        - how should shadow work
+    - Re-add option to have gap in the walls, needs to work better
+    - Make more options for phases
+        - Switch to random phase instead of switching phases i n order
+
+MISC IDEAS
+    - Fix spike bombs and growbombs spawning too close to eachother??
+    - Redo spike bombs visual indicaator
+    - In tileTouch mode, your points should be how many tiles you touched not how many clears you got. So you see your score go up by 1 tile each time.
+    - don't make orbs spawn right on top of you
+    - don't make spike bombs/grow bombs/crushers/etc spawn on top of eachother?
+    - need to increase the range of contol file (punctuation characters, etc shouldnt only be letters/numbers)
+
+KNOWN BUGS
+    - The jump charge is still super wonky
+        - player charging in air needs to be a variable? and probably almost always set to false makes sense?
+        - it seems it ALWAYS charges at least 2 jumps even if you have 1 jump as max? what? if you use the 1 jump it gives you another instantly without recharging 
+    -There isn't actually any support in loadPresetJSON() for preset group name? i don't have any support for multiple presets yet
+    - the crushers really really don't work on an actual build outside the unity editor??
+        - the lasers don't show?? make it just a physcial change to the game object not a laser? or fix the laser
+    - Preset dependency needs to be fixed so it can be dependent on any preset not just hard coded to the first one?
+        - Should the presets be able to be dependent on a different Preset Group?
+            - This would make you not have to define the whole DEFAULT preset in every file (save so much space)
+    - walls are MEGA bugged regarding phase switches still?
+        - wall walk 2
+        - it is related to width/thickness?????
+        - something weird is going in with there being 2 colliders?? after a phase switch?
+        - ??????
+        - also need to add holes back
+    -in blocked vision the tall walls dont despawn in the built client???
+        - they work fine in editor
+
+STRUCTURE/MAP IDEAS
+    - There are 3 "worlds", interactable maps with the levels in them? Each level inside the world has 1-3 challenges/tokens you can get from it?
+    - Most of the points on the world map are just empty nodes, not levels. So you can move around quite a bit and explore.
+    - You can unlock the next world without beating every challenge, but there are secret rooms in the worlds that you need to have a certain amount for (sm64)
+    - WORLD 1: Default scoring mode, introduce to obstacles
+        - You unlock abilities during it?
+            - world 1 is used to slowly unlock and introduce all abilities, and then in later worlds the abilities can be changed to fit different level ideas? so in world 1 the progression is linear so they have consistent unlocks?
+        - (tutorial levels) - (Unlock first jump) - (level) - (level) - (level) - (unlock dash or some ability) - (level) - (boss? )
+    - WORLD 2: Different scoring mode (touch all tiles?), introduce to more obstacles, falling tiles, mutations
+        - How to make it not confusing what abilities you have in a certain level...
+            - You only have 1 core "ability" in each level (dash, multi-jump, teleport, ...), then different paths in the map each use a different ability so they are kind of in order?
+        - some bosses here? world 1 will be differentiated by being the tutorial, world 2 differntiated by having like a set of 4 bosses, and world 3 differentiated by being just a series of hard levels (variations of the "bosses" in each level?)
+        - the whole level will be an open area and you can go to each boss in the order you want, but there will be one boss obviously easier and maybe one obviously harder (dragon dungeon ROTMG). boss will be surrounded by levels to unlock it with mechanics similar to the boss?
+            - maybe levels before boss have the small spikeBomb at 0.5 sizeScale and then boss is using it at 2.0 or 3.0
+            - If you play and beat the 4 boss levels in a row without dying, you unlock a secret level. you just have to beat all 4 once though to unlock world 3 (disc room worm level idea)
+    - WORLD 3: Everything I can throw at them?
+        - Nothing in here will require glitches or tricky hitboxes, but the later levels at least will be hard enough to make sure the player actually understands every mechanic of the enemies to survive long in a level. there's no way you should beat these levels on first 3-5 tries, you should need to know the phases and be prepared for what's going to happen next before it visualy happens to be able to survive long enough
+    - World 4: Bonus, maybe something unlocked by the puzzles, nearly impossible levels and ones you have to borderline glitch or get pure luck
+    -Completing one challenge in a level gives you a star (so can get multiple stars per level), completing all challenges in a level fully gives you a special star for unlocking harder content? then maybe also a secret "mastery" score for every infinite level that you can get to to beat it (like getting yellow color level in disc room for 20 seconds)
+    - Level chains - beat 3 levels in a row without dying similar to the worm levels in disc room
+        - Beat a chain of levels to approach boss/boss fight that is a chain of levels?
+    - Add secret paths that don't render a line, you can go into them if you press the button (like the hole in the mountain you can walk into first level in sm64)
+    - make a world layout like the fortress level in sm64
+    - Some way incorporate an admin mode where you can just play around with variables
+
+PUZZLE IDEAS
+    - Map points can be "switches", will rotate objects in the world if you enable? enable/disable objects.
+        - switch will be inside of a level and then it affects somethign on world map? and switches on world map too?
+    - At the end of the room there is a key that spawns? Use that key in main world.
+     - Puzzle rooms - have one where the entire floor is a 9 digit keypad like a safe and you can jump to press the numbers? and the code from it would be something hidden in the map? or hidden in the game
+    - What do the puzzle rooms give you? Unlock more rooms..?
+        - All the puzzle rooms are linked together or spread out?
+        - The token you get from getting a "mastery" score on a level is what you use to check if you have the code right on a puzzle (to submit your answer) (so you can't spam the puzzle)
+    - Fragments of the puzzles will be spread out throughout game objects in the world map like on top of pillars and surfaces that you have to rotate your camera around to find
+        - Similar to like The Witness or something, the puzzles will mostly just be about rotating objects i think to face a direction so not too complicated, but spread out the hints so you have to find them and put them together. Some of the later puzzles can be split up/fragmented/rotated around so it's a lot harder to figure out?
+
+BOSS IDEAS
+    - Definitely want to have an actual actual boss
+    - Maybe a massive 100x100 size room and you have to do tile clear in a bullet hell? (only certain tiles not whole massive arena)
+        - There is a boss chasing you during it? discs moving around?
+        - Disc style boss basically like disc room?
+            - large stage and it moves around/has patterns? hm
+        - ROTMG style bullet hell boss?
+            - Rock Concstruct in the godlands? you have to target on one of them and they rotate, shoot at you, heal when you are not shooting at them so you have to focus one?
+            - Temple Dungeon like boss that is more complicated?? requires you to kill it in ordered phases and gets stronger if you do it wrong
+                - it spawns 3-4 mini bosses you need to kill in a certain order? pillars or something you have to interact with/destroy in a certain order?
+                - it would require you to find a code before you even have a chance to beat the boss, could introduce boss early
+            - a Cube God type boss?? super easy look. maybe they have to jump on top of massive swarm of enemies protecting boss?
+            - the event god to unlock Shatters could be good where you shoot down 4 pillars around the corners of the boss during each of its phases?
+                - could use the area score timers to make you stand in 4 areas around each of the corners for 10 seconds during each phase?
+            - if you go with the idea of building bosses like Godlands gods...
+                - couldn't you have a large 50x50 level where you spawn infinite gods that is like "godlands" and they horde up or chase you?
+        - A boss where they are a moving cube where 3 orbs spawn on the side of them (so 12 spots for an orb to spawn) and you have to touch each one at a time around it 
+    - Make the player fight the boss before you have the abilities to actually beat it?
+        - Make player suspect they will unlock abilities before they do?
+
+VARIABLE DEFINITIONS
+    groundMode - An integer that tells what mode the ground will be. 0 for tiles and 1 for rotating hole
+    scoreMode - An integer that tells what mode the scoring will be. 0 for normal, 1 for orbs, 2 for touch all tiles, 3 for score Area
+    numOrbs - An integer that tells how many orbs will spawn at a time for the Orb scoring mode (scoreMode = 1)
+    groundRotSpeed - A float that tells how fast the ground will rotate (clockwise)
+    worldSize - A float that tells the world size (for ground mode not being on tile)
+    numberOfTiles - An integer for how many tiles there should be on ground
+    tileSpawnDelay - Float - how many seconds it takes for a tile to respawn after being destroyed
+    tileFallDelay - Float - how many seconds it takes for a tile to destroy after it was initially touched (assuming enableFallingTiles = true)
+    tileSize - Float - the size of the ground tiles
+    playerMoveSpeed - Float - the speed the player moves in-game
+    playerJumpSpeed - Float - the max height of the player's jump
+    playerMaxNumJumps - Int - the max number of jumps a player can store
+    playerTeleportDistance - Float - how far the teleport will go
+    playerTeleportScrollScale - Float - make the teleport move slower/faster with your mouse wheel scroll
+    basicWallsMoveSpeed - Float - how fast do the Basic Walls move (moving from one side of stage to the other)
+    basicWallsHoleSize - Float - the size of the hole/gap in the Basic Walls (can be 0 for no gap)
+    basicWallsWidth - Float - the width of the Basic Walls
+    basicWallsHeight - Float - the height of the Basic Walls
+    basicWallsRiseSpeed - Float - how fast the Basic Walls move in upwards/vertical direction
+    basicWallsTimer - Float - delay in seconds between spawning Basic Walls
+    spikeBombStartDelay - Float - time in seconds that the Spike Bomb will count down while still under the tile
+    spikeBombActiveDelay - Float - time in seconds that the Spike Bomb will stay active above the tile after it triggers
+    spikeBombSizeScale - Float - a multiplier for how large the Spike Bomb is (1 for default, 2 for double size, 0.5 for half size)
+    spikeBombTimer - Float - delay in seconds between spawning Spike Bombs
+    growBombDelay1 - Float - time in seconds that the Grow Bomb will stay in it's sphere shape, doesn't damage player in this phase
+    growBombDelay2 - Float - time in seconds that the Grow Bomb will spend growing from the sphere shape to it's full size
+    growBombDelay3 - Float - time in seconds tha tthe Grow Bomb will stay on the ground in its full size before despawning
+    growBombMaxSize - Float - the size the Grow Bomb grows to on the ground once it detonates
+    growBombGrowScale - Float - multiplier for how fast the Grow Bomb grows in its detonate phase
+    growBombTimer - Float - delay in seconds between spawning Grow Bombs
+    crusherWidth - Float - width of the Crushser
+    crusherDelay1 - Float - time in seconds that the crusher waits after spawning before starting it's crush
+    crusherDelay2 - Float - time in seconds for how long it takes the crusher to fully close once it starts
+    crusherDelay3 - Float - time in seconds that the crusher stays closed after it crushers before despawning
+    crusherSpeedScale - 
+    crusherTimer- Float - delay in seconds between spawning Crushers
+    orbScoreRadius - Float - radius size of the score orb
+    finalScore - Float - variable that tracks current score, usage for modes if you want score going downward instead of increasing
+    scoreArea - Float - percentage of the map that you can get points inside of in time mode (0.5 for half map, 1 for full, etc)
+    collisionsToggle  - Bool - enable if you want collision checking for making the player get trapped on walls
+    enableBasicWalls - Bool - enables Basic Walls to spawn or not
+    enableCrusher - Bool - enables Crushers to spawn or not
+    enableSpikeBomb - Bool - enables Spike Bombs to spawn or not
+    enableGrowBomb - Bool - enables Grow Bombs to spawn or not
+    enableFallingTiles - Bool - enables tiles to fall when you touch them or not
+    playerTeleport - Bool - enables the player teleport ability
+    playerTeleportScroll - Bool - enables the ability to scroll distance in the players teleport
+    pickupsSpikeBomb - Bool - enables if Spike Bombs will spawn pick up score orbs`
+    pickupsGrowBomb - Bool - enables if Grow Bombs will spawn pick up score orbs
+
+DATA STRUCTURES DOCUMENTATION:
+    -types of JSON files:
+        - world files
+        - preset files
+        - controls file
+
+    - world files (levels.json, world.json)
+        - each file is a WORLD object
+        - contains all info necessary for that world:
+            - the world's name (string)
+            - list of all POINT objects that make up the world (List<PointClass>)
+                - POINT object: contains info for a point on the world map
+                    - location of the point (Vector3)
+                    - index of the point (int) (an incrementing int you hard-code to link each level to a point)
+                    - index of the points neighbours (array of four int's) ([W,A,S,D] - first int is the index of the above point, second is index of the point to the left, ...)
+            - list of all LEVEL objects that the world contains
+                - LEVEL object: contains info for a level, it links a POINT object to a PRESET object. contains:
+                    - index of the POINT object the level is attached to (int)
+                    - name of the PRESET object the level uses (string)
+                    - index of the level (int) (hard-coded index used to save the player progress on this level)
+            - list of all GATE objects that the world contains
+                - GATE object specifies a path that it blocks between two POINT indexes that are neighbours (int -> int) and a requirement for the gate to be lifted (position of a switch, previous level finished, ...).
+                    - Not added yet
+            - list of all SWITCH objects that the world contains
+                - SWITCH object specifies a POINT object that it attches to (int) and a model/prefab it is attached to (string) and a position that it is in (int array)
+                    - Not added yet
+
+   - preset files
+        - each file is a PRESET GROUP object
+            - it contains info necessary for a certain "group" of PRESET objects (all presets for a certain world, presets of a certain mechanic, ...)
+            - A PRESET object is something that defines all aspects of a certain level (every variable needed to customize the level)
+            - Each PRESET GROUP file contains the PRESET list. The FIRST preset in the list is the DEFAULT PRESET.
+                - The DEFAULT PRESET contains the default value for every variable. Every other PRESET in the file will be built ON TOP OF these defaults.
+        - each PRESET GROUP object file contains:
+            - name of the preset group (string) (will be used by LEVEL objects to link the name of the preset)
+            - list of PRESET objects in the group:
+                PRESET OBJECT: an object that contains all of the info necessary to configure the base game for a level. it contains:
+                    - name of the preset (string) (the PRESET GROUP has a name, then each preset has a name "World1.CrusherLevel")
+                    - the dependent preset (string) (TODO)
+                    - the preset's root VARS object (VarsClass)
+                        - Contains a list of all float, string, and bool variables that make up the world (these are the general variables like world size, player speed, etc)
+                        - In general, a VARS object is just used to store a list of float, string, and bool variables
+                    - a list of SPAWN objects (List<SpawnObjectElement>)
+                        - A SPAWN object specifies an obstacle/prefab to spawn and contains all of the configuration for It
+                        - SPAWN object contains:
+                            - the name of the obstacle it is spawning (string) ("basicWalls", "crusher")
+                            - the tag of this spawn object (will be used by SCORE object to link this object to a certain PHASE)
+                            - the VARS object with all info necessary for the object
+                    - a SCORE object (ScoreClass)
+                        - An object that contains info about the different phases of the preset. It can be set to have 1 phase only, or can be set to have multiple phases where variables change.
+                        - Contains:
+                            - A list of SCORE PHASE objecs (List<ScorePhaseClass>)
+                            - Each SCORE PHASE object contains:
+                                - the score mode for that phase (string) ("time", "orbs", ...)
+                                - a list of VARS objects of the variables that get update that phase (VARS object contains a list of float, string, and bool variables)
+                                - a list of tags (strings) that are the names of the component the VARS object attaches to ("self" for applying general variables, name of spawn object to update VARS of a spawn object)
+                                - TODO explain this better
+
+    - controls file (controls.json)
+        - It is a simple JSON object containing entries for:
+            - All of the controls in the game: keyUp, keyDown, keyLeft, keyRight, ... 
+            - The value is a string of the character you want that control mapped to
+                -For now can be A-Z, 0-9, Numpad 0-9
+
+IN GAME DATA SYSTEM
+
+    - SettingsScript.Instance
+        - Vars hashtable - outdated, work on completely delete this
+        - currPreset PresetClass - holds the info for the currently loaded preset that the game will play with
+    
+    - dataManager.Instance
+        - presetObject
+        - worldObject - levelObject
+            - you can hard-access any data from the json files with these objects, they are direct imports of them
+        
+        - defaultSpawnObjects
+            - A list of every default spawnObjectElement
+            - When a preset gets loaded, it loads this default set and then updates any variables used for the preset
+
+    - Event Manager
+        -Events
+            - PlayerTouchGround
+                - Alerted by Player
+                - Enemies need to know so they can start spawning
+            - PhaseChange
+                - Alerted by ScoreController
+                - Whatever vars get updated that phase needs to know
+    
+    - Score Controller (Phase Controller?)
+        - Track things related to increasing RawScore
+        - Should trigger the PhaseChange event when RawScore is 
+
+TOM NOTES
+    - I really like the lighting changes, looks a lot softer now
+    - might be my imagination, but the jump arc feels a bit better than before
+    - This has never happened on previous versions, but I found myself glitching through the floor a LOT
+    - I really like how you have built-in functionality for differences in height in the worldmap, I think it has a lot of potential for like winding paths and overhead bridges that could look awesome
+    - Might be my keyboard, but i found that the game would register me jumping in really fast succestion and wasting all my jumps, might be nice to have like a few-frame cooldown or something
+    - would probably suck for normal levels, but adding a mode where the player's movement is acceleration based could be really fun
+    - No clue what you are thinking for visuals yet, but I think an outline shader could look really good with this project
+    - I prefer the old wall color to the new one, but it still looks nice as is
+    thats pretty much all of them
+
+GAME INFO/MARKETING/PR/DISTRIBUTION IDEAS
+    A game with a very low skill floor and literally no skill cieling
+
+    Designed for modding, modding not even required
+
+    SMILE/TEETH/GRIN
+    REFLEX
+    SKILL
+    JUMP
+    DODGE
+    SPIKE
+
+    Predecessor games
+    SSS Jun 2014
+    JJJ Sep 2014
+    FC Oct 2014
+    BBB Oct 2014
+    RR Jul 2015
+    RR Mar 2017
+
+    https://www.youtube.com/watch?v=ht6xx9en-ZU
+
+    free "demo": itch, gamejolt, host on my own website for download, host on my own website for browser play?
+        - it will actually basically be a full game?
+
+    first game: itch pay what you want, downloadable on my website, downloadable on steam for free
+
+    second game: 6$ itch and steam. can i make it availble to buy directly on my website?
+
+    third game+: expansions to the steam/itch game. completely free just to get more traffic on the same game?
+
+    gameplay trailer, prestige trailer
+
+    you're trying to break out of dungeon/cell?
+
+    NAMES/CODES/WORLD NAMES/CHAPTER NAMES:
+
+            1
+          SSS:S (Slumber)
+    S  U   P   E   R
+    S P I N N I  N G
+    S  M  I L E  Y : 
+     S L U M B E R   
+    
+            2
+        SSS:SS   (SSS:TSOS Something)
+    S  U   P   E   R
+    S P I N N I  N G
+    S  M  I L E  Y :
+         T H E
+       S  T A R  T 
+          O F
+    S O M E TH I N G
+
+            2
+        SSS:SS    (SSS:SiS Shadows)
+    S  U   P   E   R
+    S P I N N I  N G
+    S  M  I L E  Y : 
+      S C O W L S
+         I N
+     S H A D O W S
+
+           3
+        SSS:SSS (TSSOS Sorrow)
+    S  U   P   E   R
+    S P I N N I  N G
+    S  M  I L E  Y :
+        T H E
+        S I X
+    S   C R E A M S
+         O F
+    S   O R R O   W
+
+           4
+        SSS:SSSS   (TSSSS Scrolls)
+    S  U   P   E   R
+    S P I N N I  N G
+    S  M  I L E  Y :
+        T H E
+    S  E  V E N T  Y
+    S  E    V   E  N
+    S  CA T T E R ED
+    S  C  R O L L  S
+
+            5
+        SSS:SSSSS (SSSSS Surpass)
+    S  U   P   E   R
+    S P I N N I  N G
+    S  M  I L E  Y :
+    S  A D N E S  S
+    S UR R O U ND S
+      S T R O N G
+    S  M  I L  E  S
+    S  U R P A S  S
+    
+           6
+       SSS:SSSSSS (SSSSSS Six)
+    S  U   P   E   R
+    S P I N N I  N G
+    S  M  I L E  Y :
+     S I X   S I X
+     S I X   S I X
+     S I X   S I X
+
+    SCREAMS
+    SCORN
+    SCOWL
+    SCUM
+    SCENT
+    SCOUT
+
+    A SMILE STORES SINISTER SECRETS
+
+INSPIRATIONS
+    Disc Room - the core structure
+    Super Mario World/Super Mario 64 - the world map
+    The World's Hardest Game - the try fail loop
+    Wario Ware - the task switching
+    Risk of Rain 2 - no skill cieling, scales into absurdum
+
+NEXT PROJECT
+
+    -Ace of Spades Classic Remake
+        - Main mode will be similar to capture the flag on classic gen map
+        - Needs to be a good connection?
+        - Needs to have similar rifle gunplay
+        - Needs to have similar desctruction mechanic?
+            - How to improve it
+                - Presets, more complicated stuff besides just blocks..
+                    - You can have your own preset to build walls/trenches/gates/bridges? how would that even work
+                    - Minecraft but better, not all cubes?
+                - Blocks can be a base for maps?
+    -ROTMG
+        - White bags
+    -Nemo Neverland Risk of Rain Downwell
+
+NOTES FOR TOM
+
+    i think it would be nice if you could visually tell if the containers have an item or not. i don't really get the different item containers, do they spawn different types of items or is it just biome?
+
+    when you interact with a container and press e to open the menu, it closes as soon as you move. maybe make it so it stays if you move but as long as you are in the range still?
+
+    i had the game crash instantly twice when i pressed the advice button on an npc, not sure why. might have been something about me clicking it while they were a new npc and not my home one.
+
+    really like the rain effect! the drops show up on top of the player if you move in front of them wonder if it's easy to just make them dissaper if they touch the player? or layered below them
+
+    when you hover over words from an npc, maybe make it so the parts you will decode are highlighted? to make it more obvious that you can do it in the first place and so you can tell which words you would get
+
+    i like that you can also get insight by new interactions or by eating stuff
+
+    i don't really get what the combine is for
+
+    i think having a way you can see all of your items like opening a menu instead of cycling through them would be nice. might also give you a better way to do the combining
+
+
+    croisant, cube -> circle
+
+    triple sphere cone thing -> move the poison crabs
+
+    croisant -> slugish
+
+    ring -> bloated
+
+    acorn -> drowsy
