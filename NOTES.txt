@@ -346,7 +346,12 @@ GAME INFO/MARKETING/PR/DISTRIBUTION IDEAS
     RR Jul 2015
     RR Mar 2017
 
-    https://www.youtube.com/watch?v=ht6xx9en-ZU
+    Inspirations
+    Disc Room - the core structure
+    Super Mario World/Super Mario 64 - the world map
+    The World's Hardest Game - the try fail loop
+    Wario Ware - the task switching
+    Risk of Rain 2 - no skill cieling, scales into absurdum
 
     free "demo": itch, gamejolt, host on my own website for download, host on my own website for browser play?
         - it will actually basically be a full game?
@@ -356,8 +361,6 @@ GAME INFO/MARKETING/PR/DISTRIBUTION IDEAS
     second game: 6$ itch and steam. can i make it availble to buy directly on my website?
 
     third game+: expansions to the steam/itch game. completely free just to get more traffic on the same game?
-
-    gameplay trailer, prestige trailer
 
     you're trying to break out of dungeon/cell?
 
@@ -411,83 +414,4 @@ GAME INFO/MARKETING/PR/DISTRIBUTION IDEAS
     S  CA T T E R ED
     S  C  R O L L  S
 
-            5
-        SSS:SSSSS (SSSSS Surpass)
-    S  U   P   E   R
-    S P I N N I  N G
-    S  M  I L E  Y :
-    S  A D N E S  S
-    S UR R O U ND S
-      S T R O N G
-    S  M  I L  E  S
-    S  U R P A S  S
-    
-           6
-       SSS:SSSSSS (SSSSSS Six)
-    S  U   P   E   R
-    S P I N N I  N G
-    S  M  I L E  Y :
-     S I X   S I X
-     S I X   S I X
-     S I X   S I X
 
-    SCREAMS
-    SCORN
-    SCOWL
-    SCUM
-    SCENT
-    SCOUT
-
-    A SMILE STORES SINISTER SECRETS
-
-INSPIRATIONS
-    Disc Room - the core structure
-    Super Mario World/Super Mario 64 - the world map
-    The World's Hardest Game - the try fail loop
-    Wario Ware - the task switching
-    Risk of Rain 2 - no skill cieling, scales into absurdum
-
-NEXT PROJECT
-
-    -Ace of Spades Classic Remake
-        - Main mode will be similar to capture the flag on classic gen map
-        - Needs to be a good connection?
-        - Needs to have similar rifle gunplay
-        - Needs to have similar desctruction mechanic?
-            - How to improve it
-                - Presets, more complicated stuff besides just blocks..
-                    - You can have your own preset to build walls/trenches/gates/bridges? how would that even work
-                    - Minecraft but better, not all cubes?
-                - Blocks can be a base for maps?
-    -ROTMG
-        - White bags
-    -Nemo Neverland Risk of Rain Downwell
-
-NOTES FOR TOM
-
-    i think it would be nice if you could visually tell if the containers have an item or not. i don't really get the different item containers, do they spawn different types of items or is it just biome?
-
-    when you interact with a container and press e to open the menu, it closes as soon as you move. maybe make it so it stays if you move but as long as you are in the range still?
-
-    i had the game crash instantly twice when i pressed the advice button on an npc, not sure why. might have been something about me clicking it while they were a new npc and not my home one.
-
-    really like the rain effect! the drops show up on top of the player if you move in front of them wonder if it's easy to just make them dissaper if they touch the player? or layered below them
-
-    when you hover over words from an npc, maybe make it so the parts you will decode are highlighted? to make it more obvious that you can do it in the first place and so you can tell which words you would get
-
-    i like that you can also get insight by new interactions or by eating stuff
-
-    i don't really get what the combine is for
-
-    i think having a way you can see all of your items like opening a menu instead of cycling through them would be nice. might also give you a better way to do the combining
-
-
-    croisant, cube -> circle
-
-    triple sphere cone thing -> move the poison crabs
-
-    croisant -> slugish
-
-    ring -> bloated
-
-    acorn -> drowsy
